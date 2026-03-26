@@ -56,8 +56,15 @@ WSGI_APPLICATION = 'aidbridge.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'aid_bridge',      # your database name
+        'USER': 'root',              # or 'aiduser' if you created one
+        'PASSWORD': 'Root@1234', # 🔴 replace with your actual MySQL password
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',    # ✅ supports emojis & Unicode
+        },
     }
 }
 

@@ -1,0 +1,2005 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 4,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 4,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 4,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 4,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 5,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 5,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 5,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 5,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 6,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 6,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 6,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 6,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add volunteer profile",
+    "content_type": 7,
+    "codename": "add_volunteerprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change volunteer profile",
+    "content_type": 7,
+    "codename": "change_volunteerprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete volunteer profile",
+    "content_type": 7,
+    "codename": "delete_volunteerprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view volunteer profile",
+    "content_type": 7,
+    "codename": "view_volunteerprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add password reset token",
+    "content_type": 8,
+    "codename": "add_passwordresettoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change password reset token",
+    "content_type": 8,
+    "codename": "change_passwordresettoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete password reset token",
+    "content_type": 8,
+    "codename": "delete_passwordresettoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view password reset token",
+    "content_type": 8,
+    "codename": "view_passwordresettoken"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add ngo profile",
+    "content_type": 9,
+    "codename": "add_ngoprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change ngo profile",
+    "content_type": 9,
+    "codename": "change_ngoprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete ngo profile",
+    "content_type": 9,
+    "codename": "delete_ngoprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view ngo profile",
+    "content_type": 9,
+    "codename": "view_ngoprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add donor profile",
+    "content_type": 10,
+    "codename": "add_donorprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change donor profile",
+    "content_type": 10,
+    "codename": "change_donorprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete donor profile",
+    "content_type": 10,
+    "codename": "delete_donorprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view donor profile",
+    "content_type": 10,
+    "codename": "view_donorprofile"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add donation",
+    "content_type": 11,
+    "codename": "add_donation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change donation",
+    "content_type": 11,
+    "codename": "change_donation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete donation",
+    "content_type": 11,
+    "codename": "delete_donation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view donation",
+    "content_type": 11,
+    "codename": "view_donation"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add volunteer assignment",
+    "content_type": 12,
+    "codename": "add_volunteerassignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change volunteer assignment",
+    "content_type": 12,
+    "codename": "change_volunteerassignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete volunteer assignment",
+    "content_type": 12,
+    "codename": "delete_volunteerassignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view volunteer assignment",
+    "content_type": 12,
+    "codename": "view_volunteerassignment"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add notification",
+    "content_type": 13,
+    "codename": "add_notification"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change notification",
+    "content_type": 13,
+    "codename": "change_notification"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete notification",
+    "content_type": 13,
+    "codename": "delete_notification"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view notification",
+    "content_type": 13,
+    "codename": "view_notification"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add donation request",
+    "content_type": 14,
+    "codename": "add_donationrequest"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change donation request",
+    "content_type": 14,
+    "codename": "change_donationrequest"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete donation request",
+    "content_type": 14,
+    "codename": "delete_donationrequest"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view donation request",
+    "content_type": 14,
+    "codename": "view_donationrequest"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "accounts",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "accounts",
+    "model": "volunteerprofile"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "accounts",
+    "model": "passwordresettoken"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "accounts",
+    "model": "ngoprofile"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "accounts",
+    "model": "donorprofile"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "ngo",
+    "model": "donation"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "ngo",
+    "model": "volunteerassignment"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "ngo",
+    "model": "notification"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "ngo",
+    "model": "donationrequest"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "637osjy2rm6y9bjckkwwr7ffglcf51d3",
+  "fields": {
+    "session_data": ".eJxVjEsOwiAUAO_C2hDoe_xcuu8ZCI-PVA1NSrsy3t2QdKHbmcm8mQ_HXv3R8-aXxK5MGnb5hRTiM7dh0iO0-8rj2vZtIT4SftrO5zXl1-1s_wY19Dq-AiCSjsUJRGWFMSBtljZJEFNGNEKXoiSCE7pYpxIRahdNVJAmS8A-X9B3NsA:1w5eUm:DclP1lCJIbXF0gPnnvwbrRmMugtx1FliGwl5fCuJC4E",
+    "expire_date": "2026-03-27T06:47:08.143Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "6y6yrefs7ru2loda29ed80yktm4dvs6f",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQAP-FsyFdaJfFo_d-A1leUjU0Ke3J-O-GpAe9zkzmLRwfe3FHS5tborgKLS6_zHN4ptpFfHC9rzKsdd8WL3siT9vkvMb0up3t36BwK30LySrIqDGYDNbmmCcmYg1kKRMxg0JjsmE_TIjsx0CoTVB2ABxDEp8v1AE3Yw:1w5bbs:UjYi1VLIkkWwUpmfnWiwQ6bWRG8LcKlHXN-9UrUdLtQ",
+    "expire_date": "2026-03-27T03:42:16.805Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "74fw6sk4dxvkqhf759m2pu7uvqiny0bk",
+  "fields": {
+    "session_data": ".eJxVjMsKwjAQAP9lzxJM1nSbHr37DWVfmKq00MdJ_Hcp9KDXmWHe0PO21n5bfO4Hgw5igdMvFNanj7uxB4_3Keg0rvMgYU_CYZdwm8xf16P9G1ReKnSAhUkwkbori7uSO7WloAjRhdSz8xk1WZM5W1siYtvkJiVTk-gIny83MTjZ:1w5hKB:cJRpajlD-97N80XUMitLoWfj53oKiszDKhdnzAuN5Og",
+    "expire_date": "2026-03-27T09:48:23.502Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "anztyraekftj2x7in5cviooff7cyla7e",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQAP-FsyFdaJfFo_d-A1leUjU0Ke3J-O-GpAe9zkzmLRwfe3FHS5tborgKLS6_zHN4ptpFfHC9rzKsdd8WL3siT9vkvMb0up3t36BwK30LySrIqDGYDNbmmCcmYg1kKRMxg0JjsmE_TIjsx0CoTVB2ABxDEp8v1AE3Yw:1w5baQ:-hLPhYqu-Vz3B2GiBQbDjycXGNEteEVISb0G2vuDCYU",
+    "expire_date": "2026-03-27T03:40:46.203Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "fw0nko5yqtwj34jh9b0orxsu02x7vdkr",
+  "fields": {
+    "session_data": ".eJxVjEsOwiAUAO_C2hDoe_xcuu8ZCI-PVA1NSrsy3t2QdKHbmcm8mQ_HXv3R8-aXxK5MGnb5hRTiM7dh0iO0-8rj2vZtIT4SftrO5zXl1-1s_wY19Dq-AiCSjsUJRGWFMSBtljZJEFNGNEKXoiSCE7pYpxIRahdNVJAmS8A-X9B3NsA:1w5eUp:pz2U7ZRK8UFHp4ao-h8_0MCF3G8eDvWLcBf9cjRogGU",
+    "expire_date": "2026-03-27T06:47:11.269Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hd650uvbcwyuybkm6yq5qyq4y5e7tqc0",
+  "fields": {
+    "session_data": ".eJxVjMsKwjAQAP9lzxJM1nSbHr37DWVfmKq00MdJ_Hcp9KDXmWHe0PO21n5bfO4Hgw5igdMvFNanj7uxB4_3Keg0rvMgYU_CYZdwm8xf16P9G1ReKnSAhUkwkbori7uSO7WloAjRhdSz8xk1WZM5W1siYtvkJiVTk-gIny83MTjZ:1w5eYy:itZ_-8Mgt3So-YpgFCODaQsFYnWXs9uJseRHTq0PLb4",
+    "expire_date": "2026-03-27T06:51:28.844Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ogfl1gftkgjmxmml5r1ffml7o89emwd9",
+  "fields": {
+    "session_data": ".eJxVjEsOwiAUAO_C2hDoe_xcuu8ZCI-PVA1NSrsy3t2QdKHbmcm8mQ_HXv3R8-aXxK5MGnb5hRTiM7dh0iO0-8rj2vZtIT4SftrO5zXl1-1s_wY19Dq-AiCSjsUJRGWFMSBtljZJEFNGNEKXoiSCE7pYpxIRahdNVJAmS8A-X9B3NsA:1w5eUr:EuA65d2Ogf9w7X6w-8YpBr_rXiaAey5wqa_bRlp6ECc",
+    "expire_date": "2026-03-27T06:47:13.091Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "oif3je51xmslqe4dp97yvyolqdcd1aap",
+  "fields": {
+    "session_data": ".eJxVjMsKwjAQAP9lzxJM1nSbHr37DWVfmKq00MdJ_Hcp9KDXmWHe0PO21n5bfO4Hgw5igdMvFNanj7uxB4_3Keg0rvMgYU_CYZdwm8xf16P9G1ReKnSAhUkwkbori7uSO7WloAjRhdSz8xk1WZM5W1siYtvkJiVTk-gIny83MTjZ:1w5f0x:EXTvfRcuU8zr18XpwIX-x6pMbGT0-vt1usVJCAGhjlM",
+    "expire_date": "2026-03-27T07:20:23.741Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "oon8bt328gthdusabqj1zz0a9nvd5v2w",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQAP-FsyFdaJfFo_d-A1leUjU0Ke3J-O-GpAe9zkzmLRwfe3FHS5tborgKLS6_zHN4ptpFfHC9rzKsdd8WL3siT9vkvMb0up3t36BwK30LySrIqDGYDNbmmCcmYg1kKRMxg0JjsmE_TIjsx0CoTVB2ABxDEp8v1AE3Yw:1w5bbi:ajnDme4cfN3X-dYYhvSga7uWTBO8DJX2CJkt-lBs0pc",
+    "expire_date": "2026-03-27T03:42:06.853Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "stx1deypkiktofkzkwu88l1qguui7167",
+  "fields": {
+    "session_data": ".eJxVjEsOwiAUAO_C2hDoe_xcuu8ZCI-PVA1NSrsy3t2QdKHbmcm8mQ_HXv3R8-aXxK5MGnb5hRTiM7dh0iO0-8rj2vZtIT4SftrO5zXl1-1s_wY19Dq-AiCSjsUJRGWFMSBtljZJEFNGNEKXoiSCE7pYpxIRahdNVJAmS8A-X9B3NsA:1w5cR3:81w5gOOj-X-xDwhE23Pd0iX2K9yybOzCoonD2v3x2PI",
+    "expire_date": "2026-03-27T04:35:09.724Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "z4kictxhg9k2fr6tyl1ppn9ox4ow3ni4",
+  "fields": {
+    "session_data": ".eJxVjEsOwiAUAO_C2hDoe_xcuu8ZCI-PVA1NSrsy3t2QdKHbmcm8mQ_HXv3R8-aXxK5MGnb5hRTiM7dh0iO0-8rj2vZtIT4SftrO5zXl1-1s_wY19Dq-AiCSjsUJRGWFMSBtljZJEFNGNEKXoiSCE7pYpxIRahdNVJAmS8A-X9B3NsA:1w5eUp:pz2U7ZRK8UFHp4ao-h8_0MCF3G8eDvWLcBf9cjRogGU",
+    "expire_date": "2026-03-27T06:47:11.474Z"
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$pV8rIlVwqz8GfirjbTH0vg$1v1w4oLy7eEQ4/WJYkjSjX223cTys/eDzGU5fgYtg4g=",
+    "last_login": "2026-03-26T05:42:37.154Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-26T02:03:30.623Z",
+    "role": "donor",
+    "phone": "",
+    "city": "",
+    "pincode": "",
+    "is_verified": false,
+    "profile_picture": "",
+    "created_at": "2026-03-26T02:03:30.851Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$2Mi7vthWmD2Yj3liaZ0KQ8$g3OLWB0IEvi2VSUArcbuXlV4v7vxFvAcGFC/W32FMIc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "donor1",
+    "first_name": "Alice",
+    "last_name": "Donor",
+    "email": "donor1@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T03:34:04.767Z",
+    "role": "donor",
+    "phone": "",
+    "city": "New York",
+    "pincode": "10001",
+    "is_verified": false,
+    "profile_picture": "",
+    "created_at": "2026-03-26T03:34:05.674Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$WwIM2znv2T4QooPBQ11CcJ$UCx4MtGIyMmCRwR/8wz3T5H3H0ac5IlqwJkumt5fykM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "donor2",
+    "first_name": "Bob",
+    "last_name": "Giver",
+    "email": "donor2@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T03:34:05.746Z",
+    "role": "donor",
+    "phone": "",
+    "city": "New York",
+    "pincode": "10001",
+    "is_verified": false,
+    "profile_picture": "",
+    "created_at": "2026-03-26T03:34:06.989Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$fcDtNfhsPyYIl8ppS8vzbV$6UAXs1/CAXGoiRPT+7rr0XEmBAv729idpJoZm51hVwk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ngo_hope",
+    "first_name": "Hope",
+    "last_name": "Org",
+    "email": "hope@ngo.org",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T03:34:07.163Z",
+    "role": "ngo",
+    "phone": "",
+    "city": "New York",
+    "pincode": "",
+    "is_verified": true,
+    "profile_picture": "",
+    "created_at": "2026-03-26T03:34:08.336Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$wyKNNUu343JxXb3ScrYrE4$j+A9DGkclZe4OK4pXtWvyJmbXxpHmuRiMmLJp9F/g7w=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "ngo_care",
+    "first_name": "Care",
+    "last_name": "Group",
+    "email": "care@ngo.org",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T03:34:08.382Z",
+    "role": "ngo",
+    "phone": "",
+    "city": "Boston",
+    "pincode": "",
+    "is_verified": true,
+    "profile_picture": "",
+    "created_at": "2026-03-26T03:34:09.502Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 15,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$w1oou3kFjdUpc3RFmAtpoB$AGLs74wfOqyLqM0zJBeaWEZxhP9/2aF9UPESwPEo9gs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "vol_john",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john@vol.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T03:34:09.744Z",
+    "role": "volunteer",
+    "phone": "",
+    "city": "New York",
+    "pincode": "",
+    "is_verified": false,
+    "profile_picture": "",
+    "created_at": "2026-03-26T03:34:10.720Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$bY4c0MJ4vXnXm6xQn6xn6k$e54zuaqH6YyT6Kkmt7L76f0c7fPaOQDCyDSdhrx++n8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "vol_sarah",
+    "first_name": "Sarah",
+    "last_name": "Connor",
+    "email": "sarah@vol.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T03:34:10.799Z",
+    "role": "volunteer",
+    "phone": "",
+    "city": "New York",
+    "pincode": "",
+    "is_verified": false,
+    "profile_picture": "",
+    "created_at": "2026-03-26T03:34:11.433Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 17,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$IzcnWsu0YrMItCDWQmNxGd$D9SmqN2hTR7vxCWhRP/eZ6v9C1dsKbTWUYvsibnyx08=",
+    "last_login": "2026-03-26T09:40:15.115Z",
+    "is_superuser": false,
+    "username": "abc_foundations",
+    "first_name": "ABC",
+    "last_name": "Foundations",
+    "email": "rashmim9566@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T03:45:32.861Z",
+    "role": "ngo",
+    "phone": "",
+    "city": "",
+    "pincode": "",
+    "is_verified": true,
+    "profile_picture": "",
+    "created_at": "2026-03-26T03:45:33.116Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 18,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$52JQodEnyWHYlwCoiYxAcL$AnRR8LXAfWMXzAs/A7G9Ud40F7NXdZItQV1++8KL9eU=",
+    "last_login": "2026-03-26T09:45:14.801Z",
+    "is_superuser": false,
+    "username": "nithya",
+    "first_name": "Nithya",
+    "last_name": "S",
+    "email": "nivedhithas994@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T03:45:33.132Z",
+    "role": "donor",
+    "phone": "",
+    "city": "Karur",
+    "pincode": "639001",
+    "is_verified": false,
+    "profile_picture": "",
+    "created_at": "2026-03-26T03:45:33.439Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 19,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$0t3DX4840PGH5Man94w3it$YH0gme3MhWZI+qe7IPPC8et0YfCDmzXdKVvNpsYjYW8=",
+    "last_login": "2026-03-26T14:14:49.565Z",
+    "is_superuser": false,
+    "username": "preethi",
+    "first_name": "Preethi",
+    "last_name": "S",
+    "email": "preethipri44@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T03:45:33.457Z",
+    "role": "volunteer",
+    "phone": "9345813374",
+    "city": "Salem",
+    "pincode": "636001",
+    "is_verified": false,
+    "profile_picture": "",
+    "created_at": "2026-03-26T03:45:33.706Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 20,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$fiNkEq8SdT8L2kSPeZ63Rc$RwnE5If3sZvI9dYdGHfqoZaT4Wz4Y4AQx4Q3JeIk35I=",
+    "last_login": "2026-03-26T06:01:37.900Z",
+    "is_superuser": false,
+    "username": "pradhikshamohankumar2005",
+    "first_name": "pradhiksha",
+    "last_name": "",
+    "email": "pradhikshamohankumar2005@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T06:00:51.638Z",
+    "role": "donor",
+    "phone": "",
+    "city": "coimbatore",
+    "pincode": "641001",
+    "is_verified": false,
+    "profile_picture": "",
+    "created_at": "2026-03-26T06:00:52.819Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 21,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$LmiGqEpOH6tO4FedvVNVpq$9fS1h21G6+kUK/etdIdzfphOCn1Ok9fdpMek69adpkg=",
+    "last_login": "2026-03-26T06:09:25.032Z",
+    "is_superuser": false,
+    "username": "preethipri1999",
+    "first_name": "Charity_care",
+    "last_name": "",
+    "email": "preethipri1999@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T06:06:56.158Z",
+    "role": "ngo",
+    "phone": "",
+    "city": "coimbatore",
+    "pincode": "641001",
+    "is_verified": true,
+    "profile_picture": "",
+    "created_at": "2026-03-26T06:06:57.488Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 22,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$mrPEJ8Mh1tTJ4K4N0gGhrZ$A0/RZ9c8ItbwT0GDjFNW94cSqX9wRVaNHAW2M+nP6Oo=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "xyz",
+    "first_name": "xyz_foundations",
+    "last_name": "",
+    "email": "xyz@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T06:43:29.247Z",
+    "role": "ngo",
+    "phone": "",
+    "city": "chennai",
+    "pincode": "600017",
+    "is_verified": true,
+    "profile_picture": "",
+    "created_at": "2026-03-26T06:43:33.400Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 23,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$B3Nj1QWgcNwZM4xYOqs5tg$GNly3egeDzDgJauBoSlybxJJQeaAQ9Twu78jLUJ3NDk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "xyze",
+    "first_name": "xyz_organisations",
+    "last_name": "",
+    "email": "xyze@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-26T09:37:42.341Z",
+    "role": "ngo",
+    "phone": "",
+    "city": "Salem",
+    "pincode": "636005",
+    "is_verified": true,
+    "profile_picture": "",
+    "created_at": "2026-03-26T09:37:42.942Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.ngoprofile",
+  "pk": 4,
+  "fields": {
+    "user": 13,
+    "organization_name": "Hope Foundation",
+    "description": "Providing food and clothes",
+    "address": "",
+    "city": "New York",
+    "pincode": "10001",
+    "website": "",
+    "is_approved": true,
+    "approved_at": null,
+    "approval_email_sent": false
+  }
+},
+{
+  "model": "accounts.ngoprofile",
+  "pk": 5,
+  "fields": {
+    "user": 14,
+    "organization_name": "Care Network",
+    "description": "Medical and education support",
+    "address": "",
+    "city": "Boston",
+    "pincode": "02115",
+    "website": "",
+    "is_approved": true,
+    "approved_at": null,
+    "approval_email_sent": false
+  }
+},
+{
+  "model": "accounts.ngoprofile",
+  "pk": 6,
+  "fields": {
+    "user": 17,
+    "organization_name": "ABC Foundations",
+    "description": "Customized test NGO",
+    "address": "",
+    "city": "Salem",
+    "pincode": "636001",
+    "website": "",
+    "is_approved": true,
+    "approved_at": null,
+    "approval_email_sent": false
+  }
+},
+{
+  "model": "accounts.ngoprofile",
+  "pk": 7,
+  "fields": {
+    "user": 21,
+    "organization_name": "Charity_care",
+    "description": "Charity_care is the active ngo in coimbatore helping 1000s of  lives",
+    "address": "",
+    "city": "coimbatore",
+    "pincode": "641001",
+    "website": "",
+    "is_approved": true,
+    "approved_at": "2026-03-26T06:08:14.797Z",
+    "approval_email_sent": false
+  }
+},
+{
+  "model": "accounts.ngoprofile",
+  "pk": 8,
+  "fields": {
+    "user": 22,
+    "organization_name": "xyz_foundations",
+    "description": "we having running our organisation in t nagar ",
+    "address": "",
+    "city": "chennai",
+    "pincode": "600017",
+    "website": "",
+    "is_approved": true,
+    "approved_at": "2026-03-26T06:45:36.088Z",
+    "approval_email_sent": false
+  }
+},
+{
+  "model": "accounts.ngoprofile",
+  "pk": 9,
+  "fields": {
+    "user": 23,
+    "organization_name": "xyz_organisations",
+    "description": "xyz orgnaization is in salem",
+    "address": "",
+    "city": "Salem",
+    "pincode": "636005",
+    "website": "",
+    "is_approved": true,
+    "approved_at": "2026-03-26T09:39:22.858Z",
+    "approval_email_sent": false
+  }
+},
+{
+  "model": "accounts.donorprofile",
+  "pk": 4,
+  "fields": {
+    "user": 11,
+    "total_donations": 2
+  }
+},
+{
+  "model": "accounts.donorprofile",
+  "pk": 5,
+  "fields": {
+    "user": 12,
+    "total_donations": 1
+  }
+},
+{
+  "model": "accounts.donorprofile",
+  "pk": 6,
+  "fields": {
+    "user": 18,
+    "total_donations": 4
+  }
+},
+{
+  "model": "accounts.donorprofile",
+  "pk": 7,
+  "fields": {
+    "user": 20,
+    "total_donations": 0
+  }
+},
+{
+  "model": "accounts.volunteerprofile",
+  "pk": 4,
+  "fields": {
+    "user": 15,
+    "is_available": true,
+    "city": "New York",
+    "pincode": "10001",
+    "total_tasks": 2,
+    "completed_tasks": 1
+  }
+},
+{
+  "model": "accounts.volunteerprofile",
+  "pk": 5,
+  "fields": {
+    "user": 16,
+    "is_available": true,
+    "city": "New York",
+    "pincode": "10001",
+    "total_tasks": 0,
+    "completed_tasks": 0
+  }
+},
+{
+  "model": "accounts.volunteerprofile",
+  "pk": 6,
+  "fields": {
+    "user": 19,
+    "is_available": true,
+    "city": "Salem",
+    "pincode": "636001",
+    "total_tasks": 3,
+    "completed_tasks": 2
+  }
+},
+{
+  "model": "accounts.passwordresettoken",
+  "pk": 1,
+  "fields": {
+    "user": 17,
+    "token": "41578ab6-111a-482c-b6d6-a309dc7e7681",
+    "created_at": "2026-03-26T05:54:37.731Z",
+    "used": false
+  }
+},
+{
+  "model": "accounts.passwordresettoken",
+  "pk": 2,
+  "fields": {
+    "user": 18,
+    "token": "4997722a-a8fd-48d3-a01b-ea544a1514dc",
+    "created_at": "2026-03-26T05:55:47.730Z",
+    "used": false
+  }
+},
+{
+  "model": "ngo.donationrequest",
+  "pk": 4,
+  "fields": {
+    "ngo": 13,
+    "item_category": "food",
+    "item_name": "Rice and Groceries",
+    "quantity": "100.00",
+    "unit": "kg",
+    "description": "",
+    "location": "123 Main St",
+    "city": "New York",
+    "pincode": "10001",
+    "status": "active",
+    "quantity_received": "15.00",
+    "created_at": "2026-03-26T03:34:11.553Z",
+    "updated_at": "2026-03-26T03:34:11.553Z"
+  }
+},
+{
+  "model": "ngo.donationrequest",
+  "pk": 5,
+  "fields": {
+    "ngo": 13,
+    "item_category": "clothing",
+    "item_name": "Winter Blankets",
+    "quantity": "50.00",
+    "unit": "pieces",
+    "description": "",
+    "location": "123 Main St",
+    "city": "New York",
+    "pincode": "10001",
+    "status": "active",
+    "quantity_received": "0.00",
+    "created_at": "2026-03-26T03:34:11.598Z",
+    "updated_at": "2026-03-26T03:34:11.598Z"
+  }
+},
+{
+  "model": "ngo.donationrequest",
+  "pk": 6,
+  "fields": {
+    "ngo": 14,
+    "item_category": "medical",
+    "item_name": "First Aid Supplies",
+    "quantity": "20.00",
+    "unit": "packs",
+    "description": "",
+    "location": "45 Health Ave",
+    "city": "Boston",
+    "pincode": "",
+    "status": "active",
+    "quantity_received": "0.00",
+    "created_at": "2026-03-26T03:34:11.640Z",
+    "updated_at": "2026-03-26T03:34:11.641Z"
+  }
+},
+{
+  "model": "ngo.donationrequest",
+  "pk": 7,
+  "fields": {
+    "ngo": 17,
+    "item_category": "food",
+    "item_name": "Wheat Flour (Atta)",
+    "quantity": "50.00",
+    "unit": "kg",
+    "description": "",
+    "location": "Salem Hub",
+    "city": "Salem",
+    "pincode": "636001",
+    "status": "active",
+    "quantity_received": "5.00",
+    "created_at": "2026-03-26T03:45:33.724Z",
+    "updated_at": "2026-03-26T03:45:33.724Z"
+  }
+},
+{
+  "model": "ngo.donationrequest",
+  "pk": 8,
+  "fields": {
+    "ngo": 17,
+    "item_category": "clothing",
+    "item_name": "Kids Clothes",
+    "quantity": "30.00",
+    "unit": "pieces",
+    "description": "",
+    "location": "Salem Hub",
+    "city": "Salem",
+    "pincode": "636001",
+    "status": "active",
+    "quantity_received": "20.00",
+    "created_at": "2026-03-26T03:45:33.730Z",
+    "updated_at": "2026-03-26T09:44:05.330Z"
+  }
+},
+{
+  "model": "ngo.donationrequest",
+  "pk": 9,
+  "fields": {
+    "ngo": 17,
+    "item_category": "hygiene",
+    "item_name": "Soap and Toothpaste",
+    "quantity": "100.00",
+    "unit": "packs",
+    "description": "",
+    "location": "Salem Hub",
+    "city": "Salem",
+    "pincode": "",
+    "status": "active",
+    "quantity_received": "0.00",
+    "created_at": "2026-03-26T03:45:33.736Z",
+    "updated_at": "2026-03-26T03:45:33.736Z"
+  }
+},
+{
+  "model": "ngo.donationrequest",
+  "pk": 10,
+  "fields": {
+    "ngo": 17,
+    "item_category": "educational",
+    "item_name": "Note Books",
+    "quantity": "200.00",
+    "unit": "pieces",
+    "description": "",
+    "location": "Salem Hub",
+    "city": "Salem",
+    "pincode": "",
+    "status": "active",
+    "quantity_received": "0.00",
+    "created_at": "2026-03-26T03:45:33.743Z",
+    "updated_at": "2026-03-26T03:45:33.743Z"
+  }
+},
+{
+  "model": "ngo.donationrequest",
+  "pk": 11,
+  "fields": {
+    "ngo": 17,
+    "item_category": "medical",
+    "item_name": "Emergency First Aid Kits",
+    "quantity": "10.00",
+    "unit": "packs",
+    "description": "Urgent need for first aid kits",
+    "location": "Salem Hub",
+    "city": "Salem",
+    "pincode": "636001",
+    "status": "active",
+    "quantity_received": "0.00",
+    "created_at": "2026-03-26T04:04:30.823Z",
+    "updated_at": "2026-03-26T04:04:30.823Z"
+  }
+},
+{
+  "model": "ngo.donationrequest",
+  "pk": 12,
+  "fields": {
+    "ngo": 17,
+    "item_category": "medical",
+    "item_name": "Emergency First Aid Kits",
+    "quantity": "50.00",
+    "unit": "packs",
+    "description": "",
+    "location": "Main Hospital Road",
+    "city": "Salem",
+    "pincode": "636001",
+    "status": "active",
+    "quantity_received": "20.00",
+    "created_at": "2026-03-26T04:27:23.678Z",
+    "updated_at": "2026-03-26T09:41:23.389Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 4,
+  "fields": {
+    "request": 4,
+    "donor": 11,
+    "item_name": "Rice Sacks",
+    "quantity": "10.00",
+    "unit": "kg",
+    "message": "Hope this helps!",
+    "status": "picked_up",
+    "created_at": "2026-03-26T03:34:11.677Z",
+    "updated_at": "2026-03-26T03:34:11.677Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 5,
+  "fields": {
+    "request": 5,
+    "donor": 12,
+    "item_name": "Warm Blankets",
+    "quantity": "5.00",
+    "unit": "pieces",
+    "message": "Freshly washed.",
+    "status": "pledged",
+    "created_at": "2026-03-26T03:34:11.712Z",
+    "updated_at": "2026-03-26T03:34:11.712Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 6,
+  "fields": {
+    "request": 4,
+    "donor": 11,
+    "item_name": "Dal",
+    "quantity": "5.00",
+    "unit": "kg",
+    "message": "",
+    "status": "delivered",
+    "created_at": "2026-03-26T03:34:11.754Z",
+    "updated_at": "2026-03-26T03:34:11.755Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 7,
+  "fields": {
+    "request": 7,
+    "donor": 18,
+    "item_name": "Wheat Flour",
+    "quantity": "5.00",
+    "unit": "kg",
+    "message": "Here is the wheat flour!",
+    "status": "picked_up",
+    "created_at": "2026-03-26T03:45:33.750Z",
+    "updated_at": "2026-03-26T03:45:33.750Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 8,
+  "fields": {
+    "request": 8,
+    "donor": 18,
+    "item_name": "Used but clean clothes",
+    "quantity": "10.00",
+    "unit": "pieces",
+    "message": "Hope it helps.",
+    "status": "completed",
+    "created_at": "2026-03-26T03:45:33.758Z",
+    "updated_at": "2026-03-26T09:44:05.235Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 9,
+  "fields": {
+    "request": 10,
+    "donor": 18,
+    "item_name": "Note Books",
+    "quantity": "50.00",
+    "unit": "pieces",
+    "message": "Pledging 50 notebooks",
+    "status": "pledged",
+    "created_at": "2026-03-26T03:45:33.764Z",
+    "updated_at": "2026-03-26T03:45:33.764Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 10,
+  "fields": {
+    "request": 12,
+    "donor": 18,
+    "item_name": "First Aid Kits",
+    "quantity": "10.00",
+    "unit": "packs",
+    "message": "Happy to supply these kits!",
+    "status": "completed",
+    "created_at": "2026-03-26T04:27:24.029Z",
+    "updated_at": "2026-03-26T04:37:37.948Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 11,
+  "fields": {
+    "request": 12,
+    "donor": 18,
+    "item_name": "Emergency First Aid Kits",
+    "quantity": "10.00",
+    "unit": "packs",
+    "message": "",
+    "status": "approved",
+    "created_at": "2026-03-26T06:20:13.974Z",
+    "updated_at": "2026-03-26T09:41:55.731Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 12,
+  "fields": {
+    "request": 12,
+    "donor": 18,
+    "item_name": "Emergency First Aid Kits",
+    "quantity": "5.00",
+    "unit": "packs",
+    "message": "",
+    "status": "approved",
+    "created_at": "2026-03-26T09:20:40.901Z",
+    "updated_at": "2026-03-26T09:42:37.073Z"
+  }
+},
+{
+  "model": "ngo.donation",
+  "pk": 13,
+  "fields": {
+    "request": 8,
+    "donor": 18,
+    "item_name": "Kids Clothes",
+    "quantity": "4.00",
+    "unit": "pieces",
+    "message": "",
+    "status": "pledged",
+    "created_at": "2026-03-26T09:46:32.946Z",
+    "updated_at": "2026-03-26T09:46:32.946Z"
+  }
+},
+{
+  "model": "ngo.volunteerassignment",
+  "pk": 1,
+  "fields": {
+    "donation": 4,
+    "volunteer": 15,
+    "ngo": 13,
+    "status": "picked_up",
+    "pickup_location": "Uptown NY",
+    "delivery_location": "123 Main St",
+    "proof_image": "",
+    "notes": "",
+    "assigned_at": "2026-03-26T03:34:11.795Z",
+    "updated_at": "2026-03-26T03:34:11.795Z"
+  }
+},
+{
+  "model": "ngo.volunteerassignment",
+  "pk": 2,
+  "fields": {
+    "donation": 6,
+    "volunteer": 15,
+    "ngo": 13,
+    "status": "delivered",
+    "pickup_location": "Downtown NY",
+    "delivery_location": "123 Main St",
+    "proof_image": "",
+    "notes": "",
+    "assigned_at": "2026-03-26T03:34:12.603Z",
+    "updated_at": "2026-03-26T03:34:12.603Z"
+  }
+},
+{
+  "model": "ngo.volunteerassignment",
+  "pk": 3,
+  "fields": {
+    "donation": 7,
+    "volunteer": 19,
+    "ngo": 17,
+    "status": "picked_up",
+    "pickup_location": "Karur Main",
+    "delivery_location": "Salem Hub",
+    "proof_image": "",
+    "notes": "Met donor at main junction.",
+    "assigned_at": "2026-03-26T03:45:33.776Z",
+    "updated_at": "2026-03-26T03:45:33.776Z"
+  }
+},
+{
+  "model": "ngo.volunteerassignment",
+  "pk": 4,
+  "fields": {
+    "donation": 8,
+    "volunteer": 19,
+    "ngo": 17,
+    "status": "completed",
+    "pickup_location": "Karur Main",
+    "delivery_location": "Salem Hub",
+    "proof_image": "",
+    "notes": "Delivered successfully.",
+    "assigned_at": "2026-03-26T03:45:33.784Z",
+    "updated_at": "2026-03-26T09:44:05.094Z"
+  }
+},
+{
+  "model": "ngo.volunteerassignment",
+  "pk": 5,
+  "fields": {
+    "donation": 10,
+    "volunteer": 19,
+    "ngo": 17,
+    "status": "completed",
+    "pickup_location": "Karur Main",
+    "delivery_location": "Main Hospital Road",
+    "proof_image": "",
+    "notes": "Delivered safely to NGO.",
+    "assigned_at": "2026-03-26T04:27:24.712Z",
+    "updated_at": "2026-03-26T04:37:37.600Z"
+  }
+},
+{
+  "model": "ngo.volunteerassignment",
+  "pk": 6,
+  "fields": {
+    "donation": 12,
+    "volunteer": 19,
+    "ngo": 17,
+    "status": "assigned",
+    "pickup_location": "Karur",
+    "delivery_location": "Salem",
+    "proof_image": "",
+    "notes": "",
+    "assigned_at": "2026-03-26T09:42:36.905Z",
+    "updated_at": "2026-03-26T09:42:36.912Z"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 1,
+  "fields": {
+    "user": 11,
+    "title": "Donation Picked Up",
+    "message": "Your donation \"Rice Sacks\" has been picked up by volunteer John.",
+    "is_read": false,
+    "created_at": "2026-03-26T03:34:12.649Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 2,
+  "fields": {
+    "user": 11,
+    "title": "Donation Delivered",
+    "message": "Your donation \"Dal\" was successfully delivered to Hope Foundation.",
+    "is_read": false,
+    "created_at": "2026-03-26T03:34:12.693Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 3,
+  "fields": {
+    "user": 12,
+    "title": "Donation Pledged",
+    "message": "Your pledge for \"Warm Blankets\" has been registered. An NGO representative will approve it soon.",
+    "is_read": false,
+    "created_at": "2026-03-26T03:34:12.730Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 4,
+  "fields": {
+    "user": 13,
+    "title": "New Pledge Received",
+    "message": "Bob pledged 5 pieces of Warm Blankets.",
+    "is_read": false,
+    "created_at": "2026-03-26T03:34:12.771Z",
+    "link": "/ngo/donation-management/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 5,
+  "fields": {
+    "user": 13,
+    "title": "Successful Delivery",
+    "message": "Volunteer John delivered Dal.",
+    "is_read": false,
+    "created_at": "2026-03-26T03:34:12.817Z",
+    "link": "/ngo/dashboard/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 6,
+  "fields": {
+    "user": 14,
+    "title": "Profile Approved",
+    "message": "Your NGO profile has been approved! You can now receive donations.",
+    "is_read": false,
+    "created_at": "2026-03-26T03:34:12.858Z",
+    "link": "/ngo/dashboard/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 7,
+  "fields": {
+    "user": 15,
+    "title": "New Assignment",
+    "message": "You have been assigned to pick up Rice Sacks.",
+    "is_read": false,
+    "created_at": "2026-03-26T03:34:12.901Z",
+    "link": "/volunteer/tasks/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 8,
+  "fields": {
+    "user": 15,
+    "title": "Task Completed",
+    "message": "You successfully delivered Dal. Great job!",
+    "is_read": false,
+    "created_at": "2026-03-26T03:34:12.927Z",
+    "link": "/volunteer/history/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 9,
+  "fields": {
+    "user": 16,
+    "title": "Welcome Volunteer",
+    "message": "Welcome to AidBridge! Browse tasks near you to get started.",
+    "is_read": false,
+    "created_at": "2026-03-26T03:34:12.951Z",
+    "link": "/volunteer/browse-tasks/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 10,
+  "fields": {
+    "user": 17,
+    "title": "New Donation Pledged",
+    "message": "Donor Nithya pledged 50 Note Books.",
+    "is_read": true,
+    "created_at": "2026-03-26T03:45:33.790Z",
+    "link": "/ngo/donation-management/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 11,
+  "fields": {
+    "user": 17,
+    "title": "Items Delivered",
+    "message": "Volunteer Preethi successfully delivered Kids Clothes.",
+    "is_read": true,
+    "created_at": "2026-03-26T03:45:33.798Z",
+    "link": "/ngo/dashboard/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 12,
+  "fields": {
+    "user": 18,
+    "title": "Donation Picked Up",
+    "message": "Your Wheat Flour donation has been collected by Volunteer Preethi.",
+    "is_read": true,
+    "created_at": "2026-03-26T03:45:33.803Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 13,
+  "fields": {
+    "user": 18,
+    "title": "Donation Reached NGO",
+    "message": "Thank you! Your donation of Kids Clothes has reached ABC Foundations safely.",
+    "is_read": true,
+    "created_at": "2026-03-26T03:45:33.810Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 14,
+  "fields": {
+    "user": 18,
+    "title": "Pledge Registered",
+    "message": "Your pledge for Note Books has been registered successfully.",
+    "is_read": true,
+    "created_at": "2026-03-26T03:45:33.816Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 15,
+  "fields": {
+    "user": 19,
+    "title": "New Item to Pick Up",
+    "message": "You are assigned to pick up Wheat Flour from Nithya.",
+    "is_read": true,
+    "created_at": "2026-03-26T03:45:33.821Z",
+    "link": "/volunteer/tasks/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 16,
+  "fields": {
+    "user": 19,
+    "title": "Delivery Confirmed",
+    "message": "The NGO confirmed your delivery of Kids Clothes. Great work!",
+    "is_read": true,
+    "created_at": "2026-03-26T03:45:33.827Z",
+    "link": "/volunteer/history/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 17,
+  "fields": {
+    "user": 17,
+    "title": "New Pledge Received",
+    "message": "Nithya pledged 10 packs of First Aid Kits.",
+    "is_read": true,
+    "created_at": "2026-03-26T04:27:24.124Z",
+    "link": "/ngo/donation-management/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 18,
+  "fields": {
+    "user": 18,
+    "title": "Donation Picked Up",
+    "message": "Your First Aid Kits have been picked up!",
+    "is_read": true,
+    "created_at": "2026-03-26T04:27:24.826Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 19,
+  "fields": {
+    "user": 17,
+    "title": "Items Delivered",
+    "message": "Volunteer Preethi successfully delivered First Aid Kits.",
+    "is_read": true,
+    "created_at": "2026-03-26T04:27:25.788Z",
+    "link": "/ngo/dashboard/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 20,
+  "fields": {
+    "user": 18,
+    "title": "🎉 Donation Completed!",
+    "message": "Your donation of First Aid Kits has been successfully delivered and confirmed!",
+    "is_read": true,
+    "created_at": "2026-03-26T04:37:39.337Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 21,
+  "fields": {
+    "user": 19,
+    "title": "Task Completed!",
+    "message": "Your delivery task for First Aid Kits has been confirmed. Thank you!",
+    "is_read": true,
+    "created_at": "2026-03-26T04:37:40.471Z",
+    "link": "/volunteer/tasks/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 22,
+  "fields": {
+    "user": 17,
+    "title": "New Donation Received!",
+    "message": "Nithya S pledged 10 packs of Emergency First Aid Kits.",
+    "is_read": true,
+    "created_at": "2026-03-26T06:20:14.150Z",
+    "link": "/ngo/donation-management/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 23,
+  "fields": {
+    "user": 17,
+    "title": "New Donation Received!",
+    "message": "Nithya S pledged 5 packs of Emergency First Aid Kits.",
+    "is_read": true,
+    "created_at": "2026-03-26T09:20:41.040Z",
+    "link": "/ngo/donation-management/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 24,
+  "fields": {
+    "user": 18,
+    "title": "Donation Approved!",
+    "message": "Your donation of 5.00 packs of Emergency First Aid Kits has been approved by ABC Foundations.",
+    "is_read": true,
+    "created_at": "2026-03-26T09:41:34.524Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 25,
+  "fields": {
+    "user": 18,
+    "title": "Donation Approved!",
+    "message": "Your donation of 10.00 packs of Emergency First Aid Kits has been approved by ABC Foundations.",
+    "is_read": true,
+    "created_at": "2026-03-26T09:41:55.816Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 26,
+  "fields": {
+    "user": 19,
+    "title": "New Delivery Task!",
+    "message": "You have been assigned to deliver Emergency First Aid Kits for ABC Foundations.",
+    "is_read": true,
+    "created_at": "2026-03-26T09:42:37.234Z",
+    "link": "/volunteer/tasks/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 27,
+  "fields": {
+    "user": 18,
+    "title": "🎉 Donation Completed!",
+    "message": "Your donation of Used but clean clothes has been successfully delivered and confirmed!",
+    "is_read": true,
+    "created_at": "2026-03-26T09:44:05.424Z",
+    "link": "/donor/my-donations/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 28,
+  "fields": {
+    "user": 19,
+    "title": "Task Completed!",
+    "message": "Your delivery task for Used but clean clothes has been confirmed. Thank you!",
+    "is_read": true,
+    "created_at": "2026-03-26T09:44:05.508Z",
+    "link": "/volunteer/tasks/"
+  }
+},
+{
+  "model": "ngo.notification",
+  "pk": 29,
+  "fields": {
+    "user": 17,
+    "title": "New Donation Received!",
+    "message": "Nithya S pledged 4 pieces of Kids Clothes.",
+    "is_read": false,
+    "created_at": "2026-03-26T09:46:33.106Z",
+    "link": "/ngo/donation-management/"
+  }
+}
+]
