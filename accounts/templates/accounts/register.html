@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Register — AidBridge{% endblock %}
+{% block content %}
+<div class="auth-page">
+  <div class="auth-container" style="padding:2rem 1rem;">
+    <div class="auth-card fade-in" style="max-width:560px;">
+      <div style="text-align:center;margin-bottom:1.5rem;">
+        <img src="{% static 'images/logo.svg' %}" alt="Logo" style="height:44px;margin-bottom:0.6rem;">
+        <h2>Create Your Account</h2>
+        <p class="subtitle">Join AidBridge and start making a difference</p>
+      </div>
+      <div class="role-toggle">
+        <button type="button" class="role-btn active" data-role="donor">👤 Donor</button>
+        <button type="button" class="role-btn" data-role="ngo">🏢 NGO</button>
+        <button type="button" class="role-btn" data-role="volunteer">🙋 Volunteer</button>
+      </div>
+      {% if messages %}{% for message in messages %}
+        <div class="alert alert-{{ message.tags|default:'error' }}">{{ message }}</div>
+      {% endfor %}{% endif %}
+      <form method="post" action="/accounts/register/">
+        {% csrf_token %}
+        <input type="hidden" name="role" id="role-input" value="donor">
+        <div class="form-group">
+          <label for="full_name" id="name-label">Full Name</label>
+          <input type="text" name="full_name" id="full_name" class="form-control" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" name="phone" id="phone" class="form-control" placeholder="+91 XXXXXXXXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" name="city" id="city" class="form-control" placeholder="Your city" required>
+          </div>
+          <div class="form-group">
+            <label for="pincode">Pincode</label>
+            <input type="text" name="pincode" id="pincode" class="form-control" placeholder="6-digit pincode" maxlength="6" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Min 8 characters" required minlength="8">
+          </div>
+          <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Re-enter password" required>
+          </div>
+        </div>
+        <div class="ngo-fields" id="ngo-extra">
+          <div class="form-group">
+            <label for="ngo-description">NGO Description</label>
+            <textarea name="description" id="ngo-description" class="form-control" placeholder="Describe your NGO's mission..." rows="3"></textarea>
+          </div>
+        </div>
+        <div id="pw-msg" style="font-size:0.8rem;margin-bottom:0.75rem;display:none;"></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Create Account</button>
+      </form>
+      <div class="auth-links">Already have an account? <a href="/accounts/login/">Login</a></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+document.querySelectorAll('.role-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const role = btn.dataset.role;
+    const lbl = document.getElementById('name-label');
+    const inp = document.getElementById('full_name');
+    if (role === 'ngo') { lbl.textContent = 'Organization Name'; inp.placeholder = 'NGO / Organization name'; }
+    else { lbl.textContent = 'Full Name'; inp.placeholder = 'Enter your full name'; }
+  });
+});
+document.getElementById('confirm_password').addEventListener('input', function() {
+  const msg = document.getElementById('pw-msg');
+  msg.style.display = 'block';
+  if (this.value === document.getElementById('password').value) { msg.textContent = 'Passwords match'; msg.style.color = '#16a34a'; }
+  else { msg.textContent = 'Passwords do not match'; msg.style.color = '#dc2626'; }
+});
+const urlParams = new URLSearchParams(window.location.search);
+const rp = urlParams.get('role');
+if (rp) { const b = document.querySelector('.role-btn[data-role="'+rp+'"]'); if(b) b.click(); }
+</script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}Notifications — AidBridge{% endblock %}
+{% block role_label %}NGO Portal{% endblock %}
+{% block page_title %}Notifications{% endblock %}
+{% block notif_url %}/ngo/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/ngo/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/ngo/create-request/"><span class="nav-icon">➕</span> Create Request</a>
+<a href="/ngo/manage-requests/"><span class="nav-icon">📋</span> Manage Requests</a>
+<a href="/ngo/donation-management/"><span class="nav-icon">💝</span> Donation Management</a>
+<a href="/ngo/volunteer-assignment/"><span class="nav-icon">🙋</span> Volunteer Assignment</a>
+<a href="/ngo/delivery-tracking/"><span class="nav-icon">🚚</span> Delivery Tracking</a>
+<a href="/ngo/delivery-confirmation/"><span class="nav-icon">✅</span> Delivery Confirmation</a>
+<a href="/ngo/notifications/" class="active"><span class="nav-icon">🔔</span> Notifications</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>🔔 Notifications</h1>
+  <p>All updates about donations, volunteers, and deliveries.</p>
+</div>
+
+<div class="notif-list">
+  {% for notif in notifications %}
+  <div class="notif-item {% if not notif.is_read %}unread{% endif %}">
+    <div class="notif-icon">🔔</div>
+    <div class="notif-body">
+      <h4>{{ notif.title }}</h4>
+      <p>{{ notif.message }}</p>
+      <div class="notif-time">{{ notif.created_at|timesince }} ago</div>
+    </div>
+    {% if notif.link %}
+    <a href="{{ notif.link }}" class="btn btn-outline btn-sm" style="flex-shrink:0;">View →</a>
+    {% endif %}
+  </div>
+  {% empty %}
+  <div class="card"><div class="card-body" style="text-align:center;padding:3rem;color:var(--gray-400);">
+    <div style="font-size:3rem;margin-bottom:1rem;">🔕</div>
+    <p>No notifications yet. Activity updates will appear here.</p>
+  </div></div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+{% block title %}Notifications — AidBridge{% endblock %}
+{% block role_label %}Donor{% endblock %}
+{% block page_title %}Notifications{% endblock %}
+{% block notif_url %}/donor/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/donor/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/donor/browse/"><span class="nav-icon">🔍</span> Browse Requests</a>
+<a href="/donor/my-donations/"><span class="nav-icon">💝</span> My Donations</a>
+<a href="/donor/notifications/" class="active"><span class="nav-icon">🔔</span> Notifications</a>
+<a href="/accounts/profile/"><span class="nav-icon">👤</span> Profile</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>🔔 Notifications</h1>
+  <p>Updates about your donations and delivery status.</p>
+</div>
+{% if not notifications %}
+<div class="card" style="padding:3rem;text-align:center;">
+  <div style="font-size:3rem;margin-bottom:1rem;">🔕</div>
+  <h3 style="font-family:var(--font-main);color:var(--gray-700);">No notifications yet</h3>
+  <p style="color:var(--gray-500);">You'll be notified when your donations are approved, picked up, or delivered.</p>
+</div>
+{% else %}
+<div class="notif-list">
+  {% for n in notifications %}
+  <div class="notif-item {% if not n.is_read %}unread{% endif %}">
+    <div class="notif-icon">🔔</div>
+    <div class="notif-body">
+      <h4>{{ n.title }}</h4>
+      <p>{{ n.message }}</p>
+      <div class="notif-time">{{ n.created_at|date:"M d, Y H:i" }}</div>
+    </div>
+    {% if n.link %}
+    <a href="{{ n.link }}" class="btn btn-outline btn-sm" style="align-self:center;white-space:nowrap;">View →</a>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

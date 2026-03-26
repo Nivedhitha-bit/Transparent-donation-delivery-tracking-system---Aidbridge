@@ -1,0 +1,135 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}Volunteer Assignment — AidBridge{% endblock %}
+{% block role_label %}NGO Portal{% endblock %}
+{% block page_title %}Volunteer Assignment{% endblock %}
+{% block notif_url %}/ngo/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/ngo/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/ngo/create-request/"><span class="nav-icon">➕</span> Create Request</a>
+<a href="/ngo/manage-requests/"><span class="nav-icon">📋</span> Manage Requests</a>
+<a href="/ngo/donation-management/"><span class="nav-icon">💝</span> Donation Management</a>
+<a href="/ngo/volunteer-assignment/" class="active"><span class="nav-icon">🙋</span> Volunteer Assignment</a>
+<a href="/ngo/delivery-tracking/"><span class="nav-icon">🚚</span> Delivery Tracking</a>
+<a href="/ngo/delivery-confirmation/"><span class="nav-icon">✅</span> Delivery Confirmation</a>
+<a href="/ngo/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>🙋 Volunteer Assignment</h1>
+  <p>Assign volunteers to approved donations based on location proximity.</p>
+</div>
+
+<!-- Assign Volunteer Form -->
+{% if approved_donations %}
+<div class="card" style="margin-bottom:1.5rem;">
+  <div class="card-header"><h3>📦 Pending Assignment — Approved Donations</h3></div>
+  <div class="card-body">
+    {% for donation in approved_donations %}
+    <div style="background:var(--gray-50);border-radius:12px;padding:1.25rem;margin-bottom:1rem;border:1px solid var(--gray-200);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <strong style="font-size:1rem;">{{ donation.item_name }}</strong>
+          <span class="badge badge-approved" style="margin-left:0.5rem;">Approved</span><br>
+          <small style="color:var(--gray-500);">Donor: {{ donation.donor.get_full_name|default:donation.donor.username }} | {{ donation.quantity }} {{ donation.unit }} | 📍 {{ donation.donor.city }}</small>
+        </div>
+        <form method="post" action="/ngo/assign-volunteer/" style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+          {% csrf_token %}
+          <input type="hidden" name="donation_id" value="{{ donation.pk }}">
+          <select name="volunteer_id" class="form-control" style="min-width:200px;margin-bottom:0;" required>
+            <option value="">-- Select Volunteer --</option>
+            {% for vol in volunteers %}
+              {% if vol.volunteer_profile.is_available %}
+              <option value="{{ vol.pk }}">
+                {{ vol.get_full_name|default:vol.username }} | {{ vol.city }} {{ vol.pincode }}
+                {% if vol.pincode == donation.donor.pincode %}⭐ Same Area{% elif vol.city == donation.donor.city %}📍 Same City{% endif %}
+              </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          <button type="submit" class="btn btn-primary btn-sm">Assign →</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="alert alert-info">✅ All approved donations have been assigned to volunteers.</div>
+{% endif %}
+
+<!-- Current Assignments -->
+<div class="card">
+  <div class="card-header"><h3>📋 Current Assignments</h3></div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr><th>Item</th><th>Donor</th><th>Volunteer</th><th>Vol. Location</th><th>Status</th><th>Assigned</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        {% for a in assignments %}
+        <tr>
+          <td><strong>{{ a.donation.item_name }}</strong><br><small>{{ a.donation.quantity }} {{ a.donation.unit }}</small></td>
+          <td>{{ a.donation.donor.get_full_name|default:a.donation.donor.username }}</td>
+          <td><strong>{{ a.volunteer.get_full_name|default:a.volunteer.username }}</strong><br><small>{{ a.volunteer.email }}</small></td>
+          <td>📍 {{ a.volunteer.city }} {{ a.volunteer.pincode }}</td>
+          <td><span class="badge badge-{{ a.status }}">{{ a.get_status_display }}</span></td>
+          <td>{{ a.assigned_at|date:"M d, Y" }}</td>
+          <td>
+            {% if a.status == 'assigned' %}
+            <form method="post" action="/ngo/assign-volunteer/" style="display:inline;">
+              {% csrf_token %}
+              <input type="hidden" name="donation_id" value="{{ a.donation.pk }}">
+              <select name="volunteer_id" class="form-control" style="display:inline;width:auto;margin:0;font-size:0.78rem;" required>
+                <option value="">Reassign...</option>
+                {% for vol in volunteers %}
+                  {% if vol.volunteer_profile.is_available %}
+                  <option value="{{ vol.pk }}">{{ vol.get_full_name|default:vol.username }}</option>
+                  {% endif %}
+                {% endfor %}
+              </select>
+              <button type="submit" class="btn btn-outline btn-sm" style="margin-top:4px;">🔄 Change</button>
+            </form>
+            {% else %}—{% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7" style="text-align:center;padding:2rem;color:var(--gray-400);">No assignments yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Available Volunteers Info -->
+<div class="card" style="margin-top:1.5rem;">
+  <div class="card-header"><h3>👥 Available Volunteers</h3></div>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Name</th><th>Email</th><th>City</th><th>Pincode</th><th>Status</th><th>Completed Tasks</th></tr></thead>
+      <tbody>
+        {% for vol in volunteers %}
+        <tr>
+          <td><strong>{{ vol.get_full_name|default:vol.username }}</strong></td>
+          <td>{{ vol.email }}</td>
+          <td>{{ vol.city }}</td>
+          <td>{{ vol.pincode }}</td>
+          <td>
+            {% if vol.volunteer_profile.is_available %}
+              <span class="badge badge-success">✅ Available</span>
+            {% else %}
+              <span class="badge badge-danger">❌ Unavailable</span>
+            {% endif %}
+          </td>
+          <td>{{ vol.volunteer_profile.completed_tasks }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--gray-400);">No volunteers registered yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

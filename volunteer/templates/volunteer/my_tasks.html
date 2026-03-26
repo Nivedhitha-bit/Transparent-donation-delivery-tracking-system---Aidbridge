@@ -1,0 +1,128 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+{% block title %}My Tasks — AidBridge{% endblock %}
+{% block role_label %}Volunteer{% endblock %}
+{% block page_title %}My Tasks{% endblock %}
+{% block notif_url %}/volunteer/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/volunteer/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/volunteer/tasks/" class="active"><span class="nav-icon">📋</span> My Tasks</a>
+<a href="/volunteer/task-tracking/"><span class="nav-icon">🔄</span> Task Tracking</a>
+<a href="/volunteer/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+<a href="/accounts/profile/"><span class="nav-icon">👤</span> My Profile</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>📋 My Tasks</h1>
+  <p>Accept, manage, and update your delivery tasks here.</p>
+</div>
+
+{% if not assignments %}
+<div class="card" style="padding:3rem;text-align:center;">
+  <div style="font-size:3rem;margin-bottom:1rem;">📭</div>
+  <h3 style="font-family:var(--font-main);color:var(--gray-700);">No tasks yet</h3>
+  <p style="color:var(--gray-500);">You'll see delivery tasks here once an NGO assigns one to you. Make sure your availability is ON!</p>
+</div>
+{% else %}
+<div style="display:flex;flex-direction:column;gap:1.25rem;">
+  {% for a in assignments %}
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div style="font-family:var(--font-main);font-weight:800;font-size:1.05rem;color:var(--gray-800);">
+          {{ a.donation.item_name }} × {{ a.donation.quantity }} {{ a.donation.unit }}
+        </div>
+        <div style="font-size:0.82rem;color:var(--gray-500);margin-top:0.2rem;">
+          NGO: <strong>{{ a.ngo.ngo_profile.organization_name }}</strong> &nbsp;|&nbsp;
+          Donor: <strong>{{ a.donation.donor.get_full_name|default:a.donation.donor.username }}</strong>
+        </div>
+      </div>
+      <span class="badge badge-{{ a.status }}">{{ a.get_status_display }}</span>
+    </div>
+    <div class="card-body">
+      <!-- Status Timeline -->
+      {% with statuses="assigned,accepted,picked_up,delivered,completed" labels="Assigned,Accepted,Picked Up,Delivered,Completed" %}
+      <div class="status-timeline" style="margin-bottom:1.5rem;">
+        <div class="status-step {% if a.status == 'assigned' %}current{% elif a.status != 'assigned' %}done{% endif %}"><div class="step-dot">{% if a.status != 'assigned' %}✓{% endif %}</div><div class="step-label">Assigned</div></div>
+        <div class="status-step {% if a.status == 'accepted' %}current{% elif a.status in 'picked_up,delivered,completed' %}done{% endif %}"><div class="step-dot">{% if a.status in 'picked_up,delivered,completed' %}✓{% endif %}</div><div class="step-label">Accepted</div></div>
+        <div class="status-step {% if a.status == 'picked_up' %}current{% elif a.status in 'delivered,completed' %}done{% endif %}"><div class="step-dot">{% if a.status in 'delivered,completed' %}✓{% endif %}</div><div class="step-label">Picked Up</div></div>
+        <div class="status-step {% if a.status == 'delivered' %}current{% elif a.status == 'completed' %}done{% endif %}"><div class="step-dot">{% if a.status == 'completed' %}✓{% endif %}</div><div class="step-label">Delivered</div></div>
+        <div class="status-step {% if a.status == 'completed' %}current{% endif %}"><div class="step-dot"></div><div class="step-label">Completed</div></div>
+      </div>
+      {% endwith %}
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+        <div>
+          <div style="font-size:0.75rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;margin-bottom:0.3rem;">📍 Pickup Location</div>
+          <div style="font-size:0.875rem;color:var(--gray-700);">{{ a.pickup_location|default:"Contact NGO for details" }}</div>
+        </div>
+        <div>
+          <div style="font-size:0.75rem;font-weight:700;color:var(--gray-500);text-transform:uppercase;margin-bottom:0.3rem;">🏢 Delivery To</div>
+          <div style="font-size:0.875rem;color:var(--gray-700);">{{ a.delivery_location|default:a.ngo.ngo_profile.city }}</div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display:flex;flex-wrap:wrap;gap:0.6rem;align-items:center;">
+        {% if a.status == 'assigned' %}
+          <form method="post" action="/volunteer/task-action/{{ a.pk }}/">{% csrf_token %}
+            <input type="hidden" name="action" value="accept">
+            <button type="submit" class="btn btn-success btn-sm">✅ Accept Task</button>
+          </form>
+          <form method="post" action="/volunteer/task-action/{{ a.pk }}/">{% csrf_token %}
+            <input type="hidden" name="action" value="reject">
+            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Reject this task?')">❌ Reject</button>
+          </form>
+        {% elif a.status == 'accepted' %}
+          <form method="post" action="/volunteer/task-action/{{ a.pk }}/">{% csrf_token %}
+            <input type="hidden" name="action" value="picked_up">
+            <button type="submit" class="btn btn-primary btn-sm">📦 Mark Picked Up</button>
+          </form>
+        {% elif a.status == 'picked_up' %}
+          <form method="post" action="/volunteer/task-action/{{ a.pk }}/" enctype="multipart/form-data" id="deliver-form-{{ a.pk }}">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="delivered">
+            <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+              <label style="font-size:0.82rem;font-weight:700;color:var(--gray-600);">📸 Upload Proof:</label>
+              <input type="file" name="proof_image" accept="image/*" style="font-size:0.8rem;" required>
+              <button type="submit" class="btn btn-teal btn-sm">🚚 Mark Delivered</button>
+            </div>
+          </form>
+        {% elif a.status == 'delivered' %}
+          <div class="badge badge-delivered" style="font-size:0.82rem;padding:0.5rem 1rem;">⏳ Awaiting NGO Confirmation</div>
+        {% elif a.status == 'completed' %}
+          <div class="badge badge-completed" style="font-size:0.82rem;padding:0.5rem 1rem;">🎉 Task Completed!</div>
+        {% elif a.status == 'rejected' %}
+          <div class="badge badge-rejected" style="font-size:0.82rem;padding:0.5rem 1rem;">❌ Task Rejected</div>
+        {% endif %}
+
+        {% if a.proof_image %}
+          <a href="{{ a.proof_image.url }}" target="_blank" class="btn btn-outline btn-sm">🖼️ View Proof</a>
+        {% endif %}
+      </div>
+    </div>
+    <div style="padding:0.6rem 1.5rem;background:var(--gray-50);font-size:0.75rem;color:var(--gray-400);">
+      Assigned: {{ a.assigned_at|date:"M d, Y" }} &nbsp;|&nbsp; Last updated: {{ a.updated_at|date:"M d, Y H:i" }}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Fix csrf token in forms (template variable workaround)
+document.querySelectorAll('form').forEach(f => {
+  if (!f.querySelector('[name=csrfmiddlewaretoken]')) {
+    const t = document.createElement('input');
+    t.type = 'hidden'; t.name = 'csrfmiddlewaretoken';
+    t.value = '{{ csrf_token }}';
+    f.prepend(t);
+  }
+});
+</script>
+{% endblock %}

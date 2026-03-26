@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}AidBridge — Connecting Help with Hope{% endblock %}</title>
+  <link rel="icon" href="{% static 'images/logo.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <div class="page-bg"></div>
+
+  {% block navbar %}
+  <nav class="navbar">
+    <a href="/" class="navbar-brand">
+      <img src="{% static 'images/logo.svg' %}" alt="AidBridge Logo">
+      <span>AidBridge</span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/how-it-works/">How It Works</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button>
+      {% if user.is_authenticated %}
+        <a href="/dashboard/" class="btn btn-primary btn-sm">Dashboard</a>
+        <a href="/accounts/logout/" class="btn btn-outline btn-sm">Logout</a>
+      {% else %}
+        <a href="/accounts/login/" class="btn btn-primary btn-sm">Login / Register</a>
+      {% endif %}
+    </div>
+  </nav>
+  {% endblock %}
+
+  {% block messages %}
+  {% if messages %}
+    <div style="position:fixed;top:80px;right:1rem;z-index:9998;display:flex;flex-direction:column;gap:0.5rem;max-width:360px;">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags|default:'info' }}" data-auto-dismiss style="box-shadow:var(--shadow-md)">
+          {% if message.tags == 'success' %}✅{% elif message.tags == 'error' %}❌{% elif message.tags == 'warning' %}⚠️{% else %}ℹ️{% endif %}
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% endblock %}
+
+  {% block content %}{% endblock %}
+
+  {% block chatbot %}
+  <div class="chatbot-fab">
+    <div class="chatbot-window" id="chatbot-window">
+      <div class="chatbot-header">
+        <div class="bot-avatar">🤖</div>
+        <div>
+          <h4>AidBridge Assistant</h4>
+          <p>Ask me anything!</p>
+        </div>
+        <button class="chatbot-close" id="chatbot-close">✕</button>
+      </div>
+      <div class="chatbot-messages" id="chat-messages"></div>
+      <div class="chatbot-input">
+        <input type="text" id="chat-input" placeholder="Type your question..." autocomplete="off">
+        <button class="chatbot-send" id="chat-send">➤</button>
+      </div>
+    </div>
+    <button class="chatbot-trigger" id="chatbot-trigger" title="Chat with AidBridge Assistant">💬</button>
+  </div>
+  {% endblock %}
+
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

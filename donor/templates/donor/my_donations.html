@@ -1,0 +1,111 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}My Donations — AidBridge{% endblock %}
+{% block role_label %}Donor Portal{% endblock %}
+{% block page_title %}My Donations{% endblock %}
+{% block notif_url %}/donor/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/donor/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/donor/browse/"><span class="nav-icon">🔍</span> Browse Requests</a>
+<a href="/donor/my-donations/" class="active"><span class="nav-icon">💝</span> My Donations</a>
+<a href="/donor/notifications/"><span class="nav-icon">🔔</span> Notifications {% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>💝 My Donations</h1>
+  <p>Track all your donations and their current status.</p>
+</div>
+
+{% if donations %}
+<div class="card">
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>NGO</th>
+          <th>Quantity</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>Date</th>
+          <th>Tracking</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in donations %}
+        <tr>
+          <td><strong>{{ d.item_name }}</strong></td>
+          <td>
+            {% if d.request.ngo.ngo_profile %}
+              {{ d.request.ngo.ngo_profile.organization_name }}
+            {% else %}{{ d.request.ngo.username }}{% endif %}
+          </td>
+          <td>{{ d.quantity }} {{ d.unit }}</td>
+          <td style="max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+            {{ d.message|default:"—" }}
+          </td>
+          <td><span class="badge badge-{{ d.status }}">{{ d.get_status_display }}</span></td>
+          <td>{{ d.created_at|date:"M d, Y" }}</td>
+          <td>
+            <!-- Status Timeline Mini -->
+            <div class="status-timeline" style="min-width:220px;">
+              <div class="status-step">
+                <div class="step-dot">1</div>
+                <div class="step-label">Pledged</div>
+              </div>
+              <div class="status-step">
+                <div class="step-dot">2</div>
+                <div class="step-label">Approved</div>
+              </div>
+              <div class="status-step">
+                <div class="step-dot">3</div>
+                <div class="step-label">Picked Up</div>
+              </div>
+              <div class="status-step">
+                <div class="step-dot">4</div>
+                <div class="step-label">Delivered</div>
+              </div>
+              <div class="status-step">
+                <div class="step-dot">5</div>
+                <div class="step-label">Completed</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% else %}
+<div class="card" style="text-align:center;padding:3rem;">
+  <div style="font-size:3rem;margin-bottom:1rem;">💝</div>
+  <h3 style="font-family:var(--font-main);color:var(--gray-700);">No Donations Yet</h3>
+  <p style="color:var(--gray-500);margin-bottom:1.5rem;">You haven't made any donations yet. Browse active requests to get started!</p>
+  <a href="/donor/browse/" class="btn btn-primary btn-lg">Browse Requests →</a>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Enhance status tracking display
+document.querySelectorAll('tr').forEach(row => {
+  const statusBadge = row.querySelector('.badge');
+  if (!statusBadge) return;
+  const status = statusBadge.className.split('badge-')[1];
+  const order = ['pledged','approved','picked_up','delivered','completed'];
+  const currentIdx = order.indexOf(status);
+  const steps = row.querySelectorAll('.status-step');
+  steps.forEach((step, i) => {
+    if (i < currentIdx) step.classList.add('done');
+    else if (i === currentIdx) step.classList.add('current');
+    const dot = step.querySelector('.step-dot');
+    if (dot && i < currentIdx) dot.textContent = '✓';
+  });
+});
+</script>
+{% endblock %}

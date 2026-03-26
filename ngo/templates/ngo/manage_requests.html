@@ -1,0 +1,67 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}Manage Requests — AidBridge{% endblock %}
+{% block role_label %}NGO Panel{% endblock %}
+{% block page_title %}Manage Requests{% endblock %}
+{% block notif_url %}/ngo/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/ngo/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/ngo/create-request/"><span class="nav-icon">➕</span> Create Request</a>
+<a href="/ngo/manage-requests/" class="active"><span class="nav-icon">📋</span> Manage Requests</a>
+<a href="/ngo/donation-management/"><span class="nav-icon">💝</span> Donation Management</a>
+<a href="/ngo/volunteer-assignment/"><span class="nav-icon">🙋</span> Volunteer Assignment</a>
+<a href="/ngo/delivery-tracking/"><span class="nav-icon">🚚</span> Delivery Tracking</a>
+<a href="/ngo/delivery-confirmation/"><span class="nav-icon">✅</span> Delivery Confirmation</a>
+<a href="/ngo/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %} <span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
+  <div>
+    <h1>📋 Manage Requests</h1>
+    <p>Edit, update or remove your donation requests.</p>
+  </div>
+  <a href="/ngo/create-request/" class="btn btn-primary">➕ New Request</a>
+</div>
+
+<div class="card">
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th><th>Category</th><th>Quantity</th><th>Progress</th><th>Location</th><th>Status</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for req in requests %}
+        <tr>
+          <td><strong>{{ req.item_name }}</strong><br><small style="color:var(--gray-400);">{{ req.created_at|date:"M d, Y" }}</small></td>
+          <td>{{ req.get_item_category_display }}</td>
+          <td>{{ req.quantity }} {{ req.unit }}</td>
+          <td style="min-width:120px;">
+            <div style="font-size:0.75rem;color:var(--gray-500);margin-bottom:4px;">{{ req.quantity_received }}/{{ req.quantity }} {{ req.unit }}</div>
+            <div class="progress"><div class="progress-bar" style="width:{{ req.progress_percent }}%"></div></div>
+          </td>
+          <td style="font-size:0.82rem;">{{ req.city }}</td>
+          <td><span class="badge badge-{{ req.status }}">{{ req.get_status_display }}</span></td>
+          <td>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <a href="/ngo/edit-request/{{ req.pk }}/" class="btn btn-outline btn-sm">✏️ Edit</a>
+              <form method="post" action="/ngo/delete-request/{{ req.pk }}/" style="display:inline;">
+                {% csrf_token %}
+                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(this.form, '{{ req.item_name }}')">🗑️</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7" style="text-align:center;padding:2.5rem;color:var(--gray-400);">
+          No requests yet. <a href="/ngo/create-request/" style="color:var(--primary);font-weight:700;">Create your first request →</a>
+        </td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

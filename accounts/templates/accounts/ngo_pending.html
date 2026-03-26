@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Registration Pending — AidBridge{% endblock %}
+{% block content %}
+<div class="auth-page">
+  <div class="auth-container">
+    <div class="pending-card fade-in">
+      <div class="pending-icon">⏳</div>
+      <h2 style="font-family:var(--font-main);font-size:1.6rem;font-weight:800;color:var(--gray-800);margin-bottom:0.75rem;">
+        Registration Submitted!
+      </h2>
+      <p style="color:var(--gray-600);line-height:1.7;margin-bottom:1.5rem;">
+        Thank you for registering <strong>{{ org_name }}</strong> on AidBridge.<br><br>
+        Your account is currently <strong>pending admin verification</strong>. Our team reviews each NGO to ensure authenticity and trust for donors.
+      </p>
+      <div style="background:var(--accent-light);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;text-align:left;">
+        <h4 style="font-weight:800;color:var(--accent-dark);margin-bottom:0.5rem;">📋 What happens next?</h4>
+        <ul style="color:var(--gray-700);font-size:0.875rem;padding-left:1.25rem;line-height:2;">
+          <li>Admin reviews your registration details</li>
+          <li>Verification typically takes 24–48 hours</li>
+          <li>You'll receive an <strong>email notification</strong> with a login link once approved</li>
+        </ul>
+      </div>
+      <a href="/" class="btn btn-primary">← Back to Home</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

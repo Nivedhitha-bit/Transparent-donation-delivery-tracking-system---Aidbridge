@@ -1,0 +1,70 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}Donor Dashboard — AidBridge{% endblock %}
+{% block role_label %}Donor Portal{% endblock %}
+{% block page_title %}Donor Overview{% endblock %}
+{% block notif_url %}/donor/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/donor/dashboard/" class="active"><span class="nav-icon">📊</span> Overview</a>
+<a href="/donor/browse/"><span class="nav-icon">🔍</span> Browse Requests</a>
+<a href="/donor/my-donations/"><span class="nav-icon">💝</span> My Donations</a>
+<a href="/donor/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+<a href="/accounts/profile/"><span class="nav-icon">👤</span> Profile</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Welcome, {{ user.first_name|default:user.username }}! 👋</h1>
+  <p>Your generosity is making a difference. Here's your donation summary.</p>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card blue fade-in">
+    <div class="stat-icon">💝</div>
+    <div class="stat-value">{{ total_donations }}</div>
+    <div class="stat-label">Total Donations</div>
+  </div>
+  <div class="stat-card amber fade-in fade-in-delay-1">
+    <div class="stat-icon">⚡</div>
+    <div class="stat-value">{{ active_donations }}</div>
+    <div class="stat-label">Active Donations</div>
+  </div>
+  <div class="stat-card green fade-in fade-in-delay-2">
+    <div class="stat-icon">🎉</div>
+    <div class="stat-value">{{ completed_donations }}</div>
+    <div class="stat-label">Completed</div>
+  </div>
+</div>
+
+<!-- Recent Donations -->
+<div class="card fade-in" style="margin-bottom:1.5rem;">
+  <div class="card-header">
+    <h3>📦 Recent Donations</h3>
+    <a href="/donor/my-donations/" class="btn btn-outline btn-sm">View All</a>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Item</th><th>NGO</th><th>Quantity</th><th>Status</th><th>Date</th></tr></thead>
+      <tbody>
+        {% for d in recent_donations %}
+        <tr>
+          <td><strong>{{ d.item_name }}</strong></td>
+          <td>{% if d.request.ngo.ngo_profile %}{{ d.request.ngo.ngo_profile.organization_name }}{% else %}{{ d.request.ngo.username }}{% endif %}</td>
+          <td>{{ d.quantity }} {{ d.unit }}</td>
+          <td><span class="badge badge-{{ d.status }}">{{ d.get_status_display }}</span></td>
+          <td>{{ d.created_at|date:"M d, Y" }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--gray-400);">No donations yet. <a href="/donor/browse/">Browse requests</a> to start donating!</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+  <a href="/donor/browse/" class="btn btn-primary btn-lg" style="justify-content:center;">🔍 Browse Requests</a>
+  <a href="/donor/my-donations/" class="btn btn-accent btn-lg" style="justify-content:center;">📦 Track My Donations</a>
+</div>
+{% endblock %}

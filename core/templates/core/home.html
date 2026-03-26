@@ -1,0 +1,185 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}AidBridge — Connecting Help with Hope{% endblock %}
+
+{% block content %}
+
+<!-- Hero Carousel -->
+<section class="hero-carousel">
+  <div class="hero-slide active" style="background-image: url('{% static 'images/hero1.jpg' %}')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content fade-in">
+      <h1>Connecting Help<br>with <span style="color:#fbbf24">Hope</span></h1>
+      <p>AidBridge connects donors, NGOs, and volunteers to deliver help efficiently and transparently.</p>
+      <div class="hero-btns">
+        <a href="/accounts/login/?next=donate" class="btn btn-accent btn-xl">💝 Donate Now</a>
+        <a href="/accounts/register/?role=volunteer" class="btn btn-outline-white btn-xl">🙋 Become Volunteer</a>
+        <a href="/accounts/register/?role=ngo" class="btn btn-outline-white btn-xl">🏢 Register NGO</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-slide" style="background-image: url('{% static 'images/hero2.jpg' %}')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Every <span style="color:#fbbf24">Donation</span><br>Makes a Difference</h1>
+      <p>Track your donations from pledge to delivery with complete transparency.</p>
+      <div class="hero-btns">
+        <a href="/accounts/register/" class="btn btn-accent btn-xl">🚀 Get Started Today</a>
+        <a href="/how-it-works/" class="btn btn-outline-white btn-xl">📖 How It Works</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-slide" style="background-image: url('{% static 'images/hero3.jpg' %}')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Volunteers <span style="color:#fbbf24">Bridging</span><br>Communities</h1>
+      <p>Our location-based volunteer system ensures the fastest and most efficient deliveries.</p>
+      <div class="hero-btns">
+        <a href="/accounts/register/?role=volunteer" class="btn btn-accent btn-xl">🙋 Join as Volunteer</a>
+        <a href="/accounts/login/" class="btn btn-outline-white btn-xl">🔑 Login</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-slide" style="background-image: url('{% static 'images/hero4.jpg' %}')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Empowering <span style="color:#fbbf24">NGOs</span><br>to Do More</h1>
+      <p>Verified NGOs post requests, manage donations, and coordinate volunteers all in one place.</p>
+      <div class="hero-btns">
+        <a href="/accounts/register/?role=ngo" class="btn btn-accent btn-xl">🏢 Register Your NGO</a>
+        <a href="/about/" class="btn btn-outline-white btn-xl">ℹ️ Learn More</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-control carousel-prev">&#8592;</button>
+  <button class="carousel-control carousel-next">&#8594;</button>
+  <div class="carousel-dots">
+    <button class="carousel-dot active"></button>
+    <button class="carousel-dot"></button>
+    <button class="carousel-dot"></button>
+    <button class="carousel-dot"></button>
+  </div>
+</section>
+
+<!-- Who Is AidBridge For -->
+<section class="section who-for">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2>Who is <span class="title-accent">AidBridge</span> For?</h2>
+      <p>Our platform serves three key groups — each playing a vital role in the donation journey.</p>
+    </div>
+    <div class="who-cards">
+      <div class="who-card donor fade-in fade-in-delay-1">
+        <span class="icon">👤</span>
+        <h3>Donors</h3>
+        <p>Donate items easily and track exactly where your help goes — from pledge to delivery. Every contribution is acknowledged and verified.</p>
+        <a href="/accounts/register/?role=donor" class="btn btn-primary btn-sm" style="margin-top:1rem;">Start Donating →</a>
+      </div>
+      <div class="who-card ngo fade-in fade-in-delay-2">
+        <span class="icon">🏢</span>
+        <h3>NGOs</h3>
+        <p>Post your requirements, receive donations, manage volunteers, and confirm deliveries — all through a powerful dashboard designed for you.</p>
+        <a href="/accounts/register/?role=ngo" class="btn btn-accent btn-sm" style="margin-top:1rem;">Register NGO →</a>
+      </div>
+      <div class="who-card volunteer fade-in fade-in-delay-3">
+        <span class="icon">🙋</span>
+        <h3>Volunteers</h3>
+        <p>Deliver donations and make a real difference in your community. Get matched to tasks near you and track every delivery you complete.</p>
+        <a href="/accounts/register/?role=volunteer" class="btn btn-teal btn-sm" style="margin-top:1rem;">Become Volunteer →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="section how-it-works">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2>How <span class="title-accent">It Works</span></h2>
+      <p>A simple, transparent, three-step process connecting everyone involved.</p>
+    </div>
+    <div class="hiw-grid">
+      <div class="hiw-card donor-card fade-in fade-in-delay-1">
+        <div class="role-badge">👤 For Donors</div>
+        <h3 style="font-family:var(--font-main);font-weight:800;margin-bottom:1rem;">Donate in 3 Easy Steps</h3>
+        <ul class="hiw-steps">
+          <li><span class="step-num">1</span> Browse active NGO donation requests</li>
+          <li><span class="step-num">2</span> Click "Donate Now" and pledge your item</li>
+          <li><span class="step-num">3</span> Track your donation from pickup to delivery</li>
+        </ul>
+      </div>
+      <div class="hiw-card ngo-card fade-in fade-in-delay-2">
+        <div class="role-badge">🏢 For NGOs</div>
+        <h3 style="font-family:var(--font-main);font-weight:800;margin-bottom:1rem;">Manage Everything in One Place</h3>
+        <ul class="hiw-steps">
+          <li><span class="step-num">1</span> Register and get verified by admin</li>
+          <li><span class="step-num">2</span> Post donation requests with specific needs</li>
+          <li><span class="step-num">3</span> Accept donations and assign nearby volunteers</li>
+          <li><span class="step-num">4</span> Confirm delivery and complete the cycle</li>
+        </ul>
+      </div>
+      <div class="hiw-card vol-card fade-in fade-in-delay-3">
+        <div class="role-badge">🙋 For Volunteers</div>
+        <h3 style="font-family:var(--font-main);font-weight:800;margin-bottom:1rem;">Deliver &amp; Make an Impact</h3>
+        <ul class="hiw-steps">
+          <li><span class="step-num">1</span> Register with your city and pincode</li>
+          <li><span class="step-num">2</span> Get assigned to nearby delivery tasks</li>
+          <li><span class="step-num">3</span> Accept, pick up, and deliver donations</li>
+          <li><span class="step-num">4</span> Upload proof and complete the mission</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose AidBridge -->
+<section class="section why-choose">
+  <div class="container">
+    <div class="section-title fade-in">
+      <h2>Why Choose <span class="title-accent">AidBridge?</span></h2>
+      <p>Built on trust, transparency, and technology to make every donation count.</p>
+    </div>
+    <div class="why-cards">
+      <div class="why-card fade-in fade-in-delay-1">
+        <div class="why-icon">📦</div>
+        <h3>Real-Time Tracking</h3>
+        <p>Track every donation from pledge to delivery with live status updates for donors, NGOs, and volunteers.</p>
+      </div>
+      <div class="why-card fade-in fade-in-delay-2">
+        <div class="why-icon" style="background:var(--accent-light);">🔒</div>
+        <h3>Transparent System</h3>
+        <p>Every action is logged and visible. Donors see exactly where their items go and NGOs confirm receipt with photo proof.</p>
+      </div>
+      <div class="why-card fade-in fade-in-delay-3">
+        <div class="why-icon" style="background:#d1fae5;">🤝</div>
+        <h3>Verified NGOs Only</h3>
+        <p>All NGOs are manually verified by our admin team before being granted access — ensuring your donations reach genuine causes.</p>
+      </div>
+      <div class="why-card fade-in fade-in-delay-1">
+        <div class="why-icon" style="background:#ede9fe;">📍</div>
+        <h3>Location-Based Matching</h3>
+        <p>Volunteers are matched to deliveries based on pincode proximity — faster, more efficient, less delay.</p>
+      </div>
+      <div class="why-card fade-in fade-in-delay-2">
+        <div class="why-icon" style="background:#fce7f3;">📧</div>
+        <h3>Email Notifications</h3>
+        <p>Receive email and in-app alerts at every milestone — approval, pickup, delivery, and completion.</p>
+      </div>
+      <div class="why-card fade-in fade-in-delay-3">
+        <div class="why-icon" style="background:#ecfdf5;">🤖</div>
+        <h3>AI Assistant</h3>
+        <p>Our built-in chatbot answers questions about the platform, guides new users, and helps at every step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 <strong>AidBridge</strong> — Connecting Donors, NGOs and Volunteers</p>
+  <p style="margin-top:0.5rem;font-size:0.8rem;">Built with ❤️ to make a difference</p>
+</footer>
+
+{% endblock %}

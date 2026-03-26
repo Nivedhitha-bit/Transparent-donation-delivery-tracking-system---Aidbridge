@@ -1,0 +1,88 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+{% block title %}Volunteer Dashboard — AidBridge{% endblock %}
+{% block role_label %}Volunteer{% endblock %}
+{% block page_title %}Volunteer Dashboard{% endblock %}
+{% block notif_url %}/volunteer/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/volunteer/dashboard/" class="active"><span class="nav-icon">📊</span> Overview</a>
+<a href="/volunteer/tasks/"><span class="nav-icon">📋</span> My Tasks</a>
+<a href="/volunteer/task-tracking/"><span class="nav-icon">🔄</span> Task Tracking</a>
+<a href="/volunteer/notifications/">
+  <span class="nav-icon">🔔</span> Notifications
+  {% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}
+</a>
+<a href="/accounts/profile/"><span class="nav-icon">👤</span> My Profile</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+  <div>
+    <h1>Welcome, {{ user.first_name }}! 🙋</h1>
+    <p>Your delivery tasks and performance at a glance.</p>
+  </div>
+  <!-- Availability Toggle -->
+  <form method="post" action="/volunteer/toggle-availability/">
+    {% csrf_token %}
+    <div class="avail-toggle">
+      <label class="toggle-switch">
+        <input type="checkbox" {% if is_available %}checked{% endif %} onchange="this.form.submit()">
+        <span class="toggle-track"></span>
+      </label>
+      <span class="avail-label">
+        {% if is_available %}
+          <span style="color:var(--success);">● Available</span>
+        {% else %}
+          <span style="color:var(--gray-400);">● Unavailable</span>
+        {% endif %}
+      </span>
+    </div>
+  </form>
+</div>
+
+<!-- Stats -->
+<div class="stats-grid">
+  <div class="stat-card blue fade-in">
+    <div class="stat-icon">📋</div>
+    <div class="stat-value">{{ total_tasks }}</div>
+    <div class="stat-label">Total Tasks Assigned</div>
+  </div>
+  <div class="stat-card amber fade-in fade-in-delay-1">
+    <div class="stat-icon">🚚</div>
+    <div class="stat-value">{{ active_tasks }}</div>
+    <div class="stat-label">Active Tasks</div>
+  </div>
+  <div class="stat-card green fade-in fade-in-delay-2">
+    <div class="stat-icon">✅</div>
+    <div class="stat-value">{{ completed_tasks }}</div>
+    <div class="stat-label">Completed Tasks</div>
+  </div>
+</div>
+
+<!-- Quick Links -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem;">
+  <a href="/volunteer/tasks/" class="card" style="padding:1.5rem;text-decoration:none;display:flex;align-items:center;gap:1rem;transition:var(--transition);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+    <div style="font-size:2rem;">📋</div>
+    <div>
+      <div style="font-family:var(--font-main);font-weight:800;color:var(--gray-800);">My Tasks</div>
+      <div style="font-size:0.8rem;color:var(--gray-500);">View & manage deliveries</div>
+    </div>
+  </a>
+  <a href="/volunteer/task-tracking/" class="card" style="padding:1.5rem;text-decoration:none;display:flex;align-items:center;gap:1rem;transition:var(--transition);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+    <div style="font-size:2rem;">🔄</div>
+    <div>
+      <div style="font-family:var(--font-main);font-weight:800;color:var(--gray-800);">Task Tracking</div>
+      <div style="font-size:0.8rem;color:var(--gray-500);">Full delivery timeline</div>
+    </div>
+  </a>
+  <a href="/volunteer/notifications/" class="card" style="padding:1.5rem;text-decoration:none;display:flex;align-items:center;gap:1rem;transition:var(--transition);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+    <div style="font-size:2rem;">🔔</div>
+    <div>
+      <div style="font-family:var(--font-main);font-weight:800;color:var(--gray-800);">Notifications</div>
+      <div style="font-size:0.8rem;color:var(--gray-500);">{% if unread_count %}{{ unread_count }} unread{% else %}All caught up!{% endif %}</div>
+    </div>
+  </a>
+</div>
+{% endblock %}

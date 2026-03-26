@@ -1,0 +1,78 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}Donation Management — AidBridge{% endblock %}
+{% block role_label %}NGO Portal{% endblock %}
+{% block page_title %}Donation Management{% endblock %}
+{% block notif_url %}/ngo/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/ngo/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/ngo/create-request/"><span class="nav-icon">➕</span> Create Request</a>
+<a href="/ngo/manage-requests/"><span class="nav-icon">📋</span> Manage Requests</a>
+<a href="/ngo/donation-management/" class="active"><span class="nav-icon">💝</span> Donation Management</a>
+<a href="/ngo/volunteer-assignment/"><span class="nav-icon">🙋</span> Volunteer Assignment</a>
+<a href="/ngo/delivery-tracking/"><span class="nav-icon">🚚</span> Delivery Tracking</a>
+<a href="/ngo/delivery-confirmation/"><span class="nav-icon">✅</span> Delivery Confirmation</a>
+<a href="/ngo/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>💝 Donation Management</h1>
+  <p>Review and manage all incoming donations for your NGO.</p>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h3>All Donations ({{ donations|length }})</h3>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Donor</th><th>Item</th><th>Quantity</th><th>Message</th><th>Status</th><th>Date</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for donation in donations %}
+        <tr>
+          <td>
+            <strong>{{ donation.donor.get_full_name|default:donation.donor.username }}</strong><br>
+            <small style="color:var(--gray-400);">{{ donation.donor.email }}</small><br>
+            {% if donation.donor.phone %}<small style="color:var(--gray-400);">📞 {{ donation.donor.phone }}</small>{% endif %}
+          </td>
+          <td>
+            <strong>{{ donation.item_name }}</strong><br>
+            <small style="color:var(--gray-400);">{{ donation.request.item_category }}</small>
+          </td>
+          <td>{{ donation.quantity }} {{ donation.unit }}</td>
+          <td style="max-width:150px;font-size:0.8rem;color:var(--gray-500);">{{ donation.message|default:"—"|truncatechars:60 }}</td>
+          <td><span class="badge badge-{{ donation.status }}">{{ donation.get_status_display }}</span></td>
+          <td>{{ donation.created_at|date:"M d, Y" }}</td>
+          <td>
+            {% if donation.status == 'pledged' %}
+            <form method="post" action="/ngo/donation-action/{{ donation.pk }}/" style="display:inline;">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="approve">
+              <button type="submit" class="btn btn-success btn-sm">✅ Approve</button>
+            </form>
+            <form method="post" action="/ngo/donation-action/{{ donation.pk }}/" style="display:inline;margin-left:4px;">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="reject">
+              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Reject this donation?')">❌ Reject</button>
+            </form>
+            {% else %}
+            <span style="font-size:0.8rem;color:var(--gray-400);">{{ donation.get_status_display }}</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="7" style="text-align:center;padding:2.5rem;color:var(--gray-400);">
+          No donations yet. <a href="/ngo/create-request/" style="color:var(--primary);">Create a request</a> to receive donations.
+        </td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

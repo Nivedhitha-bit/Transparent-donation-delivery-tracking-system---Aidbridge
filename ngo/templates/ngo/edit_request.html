@@ -1,0 +1,89 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}Edit Request — AidBridge{% endblock %}
+{% block role_label %}NGO Portal{% endblock %}
+{% block page_title %}Edit Request{% endblock %}
+{% block notif_url %}/ngo/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/ngo/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/ngo/create-request/"><span class="nav-icon">➕</span> Create Request</a>
+<a href="/ngo/manage-requests/" class="active"><span class="nav-icon">📋</span> Manage Requests</a>
+<a href="/ngo/donation-management/"><span class="nav-icon">💝</span> Donation Management</a>
+<a href="/ngo/volunteer-assignment/"><span class="nav-icon">🙋</span> Volunteer Assignment</a>
+<a href="/ngo/delivery-tracking/"><span class="nav-icon">🚚</span> Delivery Tracking</a>
+<a href="/ngo/delivery-confirmation/"><span class="nav-icon">✅</span> Delivery Confirmation</a>
+<a href="/ngo/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>✏️ Edit Request</h1>
+  <p>Update the details of your donation request.</p>
+</div>
+
+<div class="form-card" style="max-width:680px;">
+  <form method="post" action="/ngo/edit-request/{{ req.pk }}/">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group">
+        <label>📦 Item Category</label>
+        <select name="item_category" class="form-control" required>
+          {% for val, label in categories %}
+          <option value="{{ val }}" {% if req.item_category == val %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label>🏷️ Item Name</label>
+        <input type="text" name="item_name" class="form-control" value="{{ req.item_name }}" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>🔢 Quantity</label>
+        <input type="number" name="quantity" class="form-control" value="{{ req.quantity }}" min="0.1" step="0.01" required>
+      </div>
+      <div class="form-group">
+        <label>📏 Unit</label>
+        <select name="unit" class="form-control" required>
+          {% for val, label in units %}
+          <option value="{{ val }}" {% if req.unit == val %}selected{% endif %}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>📍 Location / Address</label>
+      <input type="text" name="location" class="form-control" value="{{ req.location }}" required>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>🏙️ City</label>
+        <input type="text" name="city" class="form-control" value="{{ req.city }}">
+      </div>
+      <div class="form-group">
+        <label>📮 Pincode</label>
+        <input type="text" name="pincode" class="form-control" value="{{ req.pincode }}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>📝 Description (optional)</label>
+      <textarea name="description" class="form-control" rows="3">{{ req.description }}</textarea>
+    </div>
+    <div class="form-group">
+      <label>🔄 Status</label>
+      <select name="status" class="form-control">
+        <option value="active" {% if req.status == 'active' %}selected{% endif %}>Active</option>
+        <option value="partially_fulfilled" {% if req.status == 'partially_fulfilled' %}selected{% endif %}>Partially Fulfilled</option>
+        <option value="fulfilled" {% if req.status == 'fulfilled' %}selected{% endif %}>Fulfilled</option>
+        <option value="closed" {% if req.status == 'closed' %}selected{% endif %}>Closed</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:1rem;margin-top:0.5rem;">
+      <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+      <a href="/ngo/manage-requests/" class="btn btn-outline">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

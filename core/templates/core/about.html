@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}About — AidBridge{% endblock %}
+{% block content %}
+<section style="padding:4rem 2rem;max-width:900px;margin:0 auto;">
+  <div class="section-title" style="margin-bottom:3rem;">
+    <h2>About <span class="title-accent">AidBridge</span></h2>
+  </div>
+  <div class="card" style="padding:2.5rem;margin-bottom:2rem;">
+    <h3 style="font-family:var(--font-main);font-weight:800;font-size:1.3rem;margin-bottom:1rem;color:var(--gray-800);">Our Mission</h3>
+    <p style="color:var(--gray-600);line-height:1.8;font-size:1rem;">
+      AidBridge is a transparent donation and delivery tracking platform that bridges the gap between
+      those who want to help and those who need it most. We connect <strong>Donors</strong>, <strong>NGOs</strong>,
+      and <strong>Volunteers</strong> in a single, unified platform — making every donation trackable, verifiable, and impactful.
+    </p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-bottom:2rem;">
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <h3>Transparency First</h3>
+      <p>Every donation is tracked from pledge to confirmation. Donors know exactly where their items go.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:#d1fae5;">🌍</div>
+      <h3>Community Driven</h3>
+      <p>Built around local communities — volunteers matched by pincode ensure fast, reliable deliveries.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon" style="background:var(--accent-light);">🔒</div>
+      <h3>Trust & Verification</h3>
+      <p>All NGOs are manually verified by admins. Only genuine organizations are granted platform access.</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2rem;">
+    <a href="/accounts/register/" class="btn btn-primary btn-xl">Join AidBridge →</a>
+  </div>
+</section>
+<footer class="footer"><p>© 2026 <strong>AidBridge</strong> — Connecting Donors, NGOs and Volunteers</p></footer>
+{% endblock %}

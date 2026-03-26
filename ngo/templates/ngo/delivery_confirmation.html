@@ -1,0 +1,76 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}Delivery Confirmation — AidBridge{% endblock %}
+{% block role_label %}NGO Portal{% endblock %}
+{% block page_title %}Delivery Confirmation{% endblock %}
+{% block notif_url %}/ngo/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/ngo/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/ngo/create-request/"><span class="nav-icon">➕</span> Create Request</a>
+<a href="/ngo/manage-requests/"><span class="nav-icon">📋</span> Manage Requests</a>
+<a href="/ngo/donation-management/"><span class="nav-icon">💝</span> Donation Management</a>
+<a href="/ngo/volunteer-assignment/"><span class="nav-icon">🙋</span> Volunteer Assignment</a>
+<a href="/ngo/delivery-tracking/"><span class="nav-icon">🚚</span> Delivery Tracking</a>
+<a href="/ngo/delivery-confirmation/" class="active"><span class="nav-icon">✅</span> Delivery Confirmation</a>
+<a href="/ngo/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>✅ Delivery Confirmation</h1>
+  <p>Verify delivered items and mark donations as completed.</p>
+</div>
+
+{% if assignments %}
+<div style="display:flex;flex-direction:column;gap:1.25rem;">
+  {% for a in assignments %}
+  <div class="card">
+    <div class="card-body">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
+        <div>
+          <h3 style="font-family:var(--font-main);font-weight:800;font-size:1.1rem;">{{ a.donation.item_name }}</h3>
+          <p style="color:var(--gray-500);font-size:0.85rem;margin-top:0.3rem;">
+            {{ a.donation.quantity }} {{ a.donation.unit }} &nbsp;|&nbsp;
+            Donor: <strong>{{ a.donation.donor.get_full_name|default:a.donation.donor.username }}</strong> &nbsp;|&nbsp;
+            Volunteer: <strong>{{ a.volunteer.get_full_name|default:a.volunteer.username }}</strong>
+          </p>
+          {% if a.donation.message %}
+          <p style="font-size:0.82rem;color:var(--gray-500);margin-top:0.5rem;font-style:italic;">"{{ a.donation.message }}"</p>
+          {% endif %}
+        </div>
+        <span class="badge badge-delivered" style="font-size:0.8rem;">🚚 Delivered — Awaiting Confirmation</span>
+      </div>
+
+      {% if a.proof_image %}
+      <div style="margin-top:1rem;">
+        <p style="font-size:0.82rem;font-weight:700;color:var(--gray-600);margin-bottom:0.5rem;">📸 Proof of Delivery:</p>
+        <img src="{{ a.proof_image.url }}" alt="Proof" style="max-width:300px;border-radius:10px;border:2px solid var(--gray-200);">
+      </div>
+      {% else %}
+      <p style="font-size:0.8rem;color:var(--gray-400);margin-top:0.75rem;">⚠️ No proof image uploaded by volunteer.</p>
+      {% endif %}
+
+      <div style="margin-top:1.25rem;display:flex;gap:0.75rem;">
+        <form method="post" action="/ngo/confirm-delivery/{{ a.pk }}/">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success" onclick="return confirm('Confirm this delivery as completed?')">
+            🎉 Confirm Delivery Complete
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="card">
+  <div class="card-body" style="text-align:center;padding:3rem;">
+    <div style="font-size:3rem;margin-bottom:1rem;">📭</div>
+    <h3 style="font-family:var(--font-main);color:var(--gray-700);">No deliveries awaiting confirmation</h3>
+    <p style="color:var(--gray-400);margin-top:0.5rem;">Items marked as delivered by volunteers will appear here for your confirmation.</p>
+    <a href="/ngo/delivery-tracking/" class="btn btn-outline" style="margin-top:1.5rem;">← View Delivery Tracking</a>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

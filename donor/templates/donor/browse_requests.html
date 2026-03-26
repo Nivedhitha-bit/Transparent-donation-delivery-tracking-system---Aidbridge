@@ -1,0 +1,78 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}Browse Requests — AidBridge{% endblock %}
+{% block role_label %}Donor Portal{% endblock %}
+{% block page_title %}Browse Donation Requests{% endblock %}
+{% block notif_url %}/donor/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/donor/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/donor/browse/" class="active"><span class="nav-icon">🔍</span> Browse Requests</a>
+<a href="/donor/my-donations/"><span class="nav-icon">💝</span> My Donations</a>
+<a href="/donor/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+<a href="/accounts/profile/"><span class="nav-icon">👤</span> Profile</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>🔍 Browse Donation Requests</h1>
+  <p>Find NGOs that need your help and donate what you can.</p>
+</div>
+
+<!-- Filters -->
+<form method="get" action="/donor/browse/">
+  <div class="filter-bar">
+    <div class="form-group">
+      <label>📦 Item Type</label>
+      <select name="item_type" class="form-control">
+        <option value="">All Categories</option>
+        {% for val, label in categories %}
+        <option value="{{ val }}" {% if filter_type == val %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label>📍 Location / City</label>
+      <input type="text" name="location" class="form-control" placeholder="Enter city..." value="{{ filter_location }}">
+    </div>
+    <button type="submit" class="btn btn-primary" style="align-self:flex-end;">🔍 Filter</button>
+    <a href="/donor/browse/" class="btn btn-outline" style="align-self:flex-end;">Clear</a>
+  </div>
+</form>
+
+<!-- Request Cards -->
+<div class="request-grid">
+  {% for req in requests %}
+  <div class="request-card fade-in">
+    <div class="request-card-header">
+      <div>
+        <div class="item-name">{{ req.item_name }}</div>
+        <div class="ngo-name">🏢 {% if req.ngo.ngo_profile %}{{ req.ngo.ngo_profile.organization_name }}{% else %}{{ req.ngo.username }}{% endif %}</div>
+      </div>
+      <span class="badge badge-{{ req.item_category }}">{{ req.get_item_category_display }}</span>
+    </div>
+    <div class="request-card-body">
+      <div class="request-meta">
+        <div class="meta-row">📦 Needs: <span>{{ req.quantity }} {{ req.unit }}</span></div>
+        <div class="meta-row">✅ Received: <span>{{ req.quantity_received }} {{ req.unit }}</span></div>
+        <div class="meta-row">📍 Location: <span>{{ req.city }}{% if req.pincode %} - {{ req.pincode }}{% endif %}</span></div>
+        {% if req.description %}<div class="meta-row" style="font-style:italic;color:var(--gray-400);">"{{ req.description|truncatechars:80 }}"</div>{% endif %}
+      </div>
+      <div class="progress" style="margin-top:0.75rem;">
+        <div class="progress-bar" style="width:{{ req.progress_percent }}%"></div>
+      </div>
+      <div style="font-size:0.75rem;color:var(--gray-400);margin-top:0.35rem;">{{ req.progress_percent }}% fulfilled</div>
+    </div>
+    <div class="request-card-footer">
+      <a href="/donor/request/{{ req.pk }}/" class="btn btn-outline btn-sm" style="flex:1;justify-content:center;">View Details</a>
+      <a href="/donor/donate/{{ req.pk }}/" class="btn btn-accent btn-sm" style="flex:1;justify-content:center;">💝 Donate</a>
+    </div>
+  </div>
+  {% empty %}
+  <div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--gray-400);">
+    <div style="font-size:3rem;margin-bottom:1rem;">🔍</div>
+    <p>No active requests found. Try changing your filters!</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

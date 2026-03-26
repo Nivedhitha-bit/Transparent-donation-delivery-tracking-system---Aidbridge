@@ -1,0 +1,89 @@
+{% extends 'core/dashboard_base.html' %}
+{% block title %}Delivery Tracking — AidBridge{% endblock %}
+{% block role_label %}NGO Portal{% endblock %}
+{% block page_title %}Delivery Tracking{% endblock %}
+{% block notif_url %}/ngo/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/ngo/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/ngo/create-request/"><span class="nav-icon">➕</span> Create Request</a>
+<a href="/ngo/manage-requests/"><span class="nav-icon">📋</span> Manage Requests</a>
+<a href="/ngo/donation-management/"><span class="nav-icon">💝</span> Donation Management</a>
+<a href="/ngo/volunteer-assignment/"><span class="nav-icon">🙋</span> Volunteer Assignment</a>
+<a href="/ngo/delivery-tracking/" class="active"><span class="nav-icon">🚚</span> Delivery Tracking</a>
+<a href="/ngo/delivery-confirmation/"><span class="nav-icon">✅</span> Delivery Confirmation</a>
+<a href="/ngo/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>🚚 Delivery Tracking</h1>
+  <p>Monitor the real-time status of all deliveries.</p>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h3>All Active Deliveries ({{ assignments|length }})</h3>
+  </div>
+  <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem;">
+    {% for a in assignments %}
+    <div style="background:var(--gray-50);border-radius:14px;padding:1.5rem;border:1px solid var(--gray-200);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;">
+        <div>
+          <h4 style="font-family:var(--font-main);font-size:1.05rem;font-weight:800;color:var(--gray-800);">
+            {{ a.donation.item_name }}
+            <span class="badge badge-{{ a.status }}" style="margin-left:0.5rem;">{{ a.get_status_display }}</span>
+          </h4>
+          <p style="font-size:0.82rem;color:var(--gray-500);margin-top:0.25rem;">
+            {{ a.donation.quantity }} {{ a.donation.unit }} &nbsp;|&nbsp;
+            Donor: <strong>{{ a.donation.donor.get_full_name|default:a.donation.donor.username }}</strong> &nbsp;|&nbsp;
+            Volunteer: <strong>{{ a.volunteer.get_full_name|default:a.volunteer.username }}</strong>
+          </p>
+        </div>
+        <div style="text-align:right;font-size:0.8rem;color:var(--gray-400);">
+          Assigned: {{ a.assigned_at|date:"M d, Y" }}
+        </div>
+      </div>
+
+      <!-- Status Timeline -->
+      <div class="status-timeline">
+        {% with status=a.status %}
+        <div class="status-step {% if status in 'assigned,accepted,picked_up,delivered,completed' %}done{% endif %}">
+          <div class="step-dot">✓</div>
+          <span class="step-label">Assigned</span>
+        </div>
+        <div class="status-step {% if status in 'accepted,picked_up,delivered,completed' %}done{% elif status == 'assigned' %}current{% endif %}">
+          <div class="step-dot">{% if status in 'accepted,picked_up,delivered,completed' %}✓{% else %}2{% endif %}</div>
+          <span class="step-label">Accepted</span>
+        </div>
+        <div class="status-step {% if status in 'picked_up,delivered,completed' %}done{% elif status == 'accepted' %}current{% endif %}">
+          <div class="step-dot">{% if status in 'picked_up,delivered,completed' %}✓{% else %}3{% endif %}</div>
+          <span class="step-label">Picked Up</span>
+        </div>
+        <div class="status-step {% if status in 'delivered,completed' %}done{% elif status == 'picked_up' %}current{% endif %}">
+          <div class="step-dot">{% if status in 'delivered,completed' %}✓{% else %}4{% endif %}</div>
+          <span class="step-label">Delivered</span>
+        </div>
+        <div class="status-step {% if status == 'completed' %}done{% elif status == 'delivered' %}current{% endif %}">
+          <div class="step-dot">{% if status == 'completed' %}✓{% else %}5{% endif %}</div>
+          <span class="step-label">Completed</span>
+        </div>
+        {% endwith %}
+      </div>
+
+      {% if a.pickup_location or a.delivery_location %}
+      <div style="margin-top:1rem;display:flex;gap:2rem;flex-wrap:wrap;">
+        {% if a.pickup_location %}<span style="font-size:0.8rem;color:var(--gray-500);">📦 Pickup: {{ a.pickup_location }}</span>{% endif %}
+        {% if a.delivery_location %}<span style="font-size:0.8rem;color:var(--gray-500);">🏠 Delivery: {{ a.delivery_location }}</span>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+    {% empty %}
+    <div style="text-align:center;padding:2.5rem;color:var(--gray-400);">
+      No active deliveries. Approve donations and assign volunteers to start tracking.
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

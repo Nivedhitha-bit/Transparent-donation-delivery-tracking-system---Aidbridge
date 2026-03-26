@@ -1,0 +1,83 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+{% block title %}Task Tracking — AidBridge{% endblock %}
+{% block role_label %}Volunteer{% endblock %}
+{% block page_title %}Task Tracking{% endblock %}
+{% block notif_url %}/volunteer/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/volunteer/dashboard/"><span class="nav-icon">📊</span> Overview</a>
+<a href="/volunteer/tasks/"><span class="nav-icon">📋</span> My Tasks</a>
+<a href="/volunteer/task-tracking/" class="active"><span class="nav-icon">🔄</span> Task Tracking</a>
+<a href="/volunteer/notifications/"><span class="nav-icon">🔔</span> Notifications{% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}</a>
+<a href="/accounts/profile/"><span class="nav-icon">👤</span> My Profile</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>🔄 Task Status Tracking</h1>
+  <p>Full timeline of all your delivery tasks and their progress.</p>
+</div>
+
+{% if not assignments %}
+<div class="card" style="padding:3rem;text-align:center;">
+  <div style="font-size:3rem;margin-bottom:1rem;">📊</div>
+  <h3 style="font-family:var(--font-main);color:var(--gray-700);">No tasks to track yet</h3>
+</div>
+{% else %}
+<div class="card">
+  <div class="card-header"><h3>All Delivery Tasks</h3></div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>NGO</th>
+          <th>Donor</th>
+          <th>Pickup</th>
+          <th>Delivery</th>
+          <th>Status</th>
+          <th>Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for a in assignments %}
+        <tr>
+          <td><strong>{{ a.donation.item_name }}</strong><br><span style="color:var(--gray-500);font-size:0.8rem;">{{ a.donation.quantity }} {{ a.donation.unit }}</span></td>
+          <td>{{ a.ngo.ngo_profile.organization_name }}</td>
+          <td>{{ a.donation.donor.get_full_name|default:a.donation.donor.username }}</td>
+          <td style="font-size:0.82rem;">{{ a.pickup_location|default:"—" }}</td>
+          <td style="font-size:0.82rem;">{{ a.delivery_location|default:"—" }}</td>
+          <td><span class="badge badge-{{ a.status }}">{{ a.get_status_display }}</span></td>
+          <td style="font-size:0.8rem;color:var(--gray-500);">{{ a.updated_at|date:"M d, Y" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Status Flow Diagram -->
+<div class="card" style="margin-top:1.5rem;">
+  <div class="card-header"><h3>📌 Status Flow Guide</h3></div>
+  <div class="card-body">
+    <div class="status-timeline" style="max-width:700px;margin:0 auto;">
+      {% for step, label, desc in status_steps_guide %}
+      <div class="status-step">
+        <div class="step-dot" style="width:32px;height:32px;font-size:0.8rem;">{{ forloop.counter }}</div>
+        <div class="step-label" style="font-size:0.72rem;">{{ label }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    <div style="display:flex;justify-content:space-around;margin-top:0.5rem;flex-wrap:wrap;gap:0.5rem;">
+      {% for step, label, desc in status_steps_guide %}
+      <div style="text-align:center;flex:1;min-width:100px;">
+        <div style="font-size:0.72rem;color:var(--gray-500);">{{ desc }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

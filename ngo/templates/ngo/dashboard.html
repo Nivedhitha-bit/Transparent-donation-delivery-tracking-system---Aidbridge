@@ -1,0 +1,86 @@
+{% extends 'core/dashboard_base.html' %}
+{% load static %}
+{% block title %}NGO Dashboard — AidBridge{% endblock %}
+{% block role_label %}NGO Panel{% endblock %}
+{% block page_title %}NGO Overview{% endblock %}
+{% block notif_url %}/ngo/notifications/{% endblock %}
+{% block profile_url %}/accounts/profile/{% endblock %}
+
+{% block sidebar_nav %}
+<a href="/ngo/dashboard/" class="active"><span class="nav-icon">📊</span> Overview</a>
+<a href="/ngo/create-request/"><span class="nav-icon">➕</span> Create Request</a>
+<a href="/ngo/manage-requests/"><span class="nav-icon">📋</span> Manage Requests</a>
+<a href="/ngo/donation-management/"><span class="nav-icon">💝</span> Donation Management</a>
+<a href="/ngo/volunteer-assignment/"><span class="nav-icon">🙋</span> Volunteer Assignment</a>
+<a href="/ngo/delivery-tracking/"><span class="nav-icon">🚚</span> Delivery Tracking</a>
+<a href="/ngo/delivery-confirmation/"><span class="nav-icon">✅</span> Delivery Confirmation</a>
+<a href="/ngo/notifications/" {% if unread_count %}style="position:relative;"{% endif %}>
+  <span class="nav-icon">🔔</span> Notifications
+  {% if unread_count %}<span class="nav-badge">{{ unread_count }}</span>{% endif %}
+</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Welcome back, {{ user.ngo_profile.organization_name }} 👋</h1>
+  <p>Here's a snapshot of your donation activity today.</p>
+</div>
+
+<!-- Stats -->
+<div class="stats-grid">
+  <div class="stat-card blue fade-in">
+    <div class="stat-icon">📋</div>
+    <div class="stat-value">{{ total_requests }}</div>
+    <div class="stat-label">Total Requests</div>
+  </div>
+  <div class="stat-card amber fade-in fade-in-delay-1">
+    <div class="stat-icon">🔄</div>
+    <div class="stat-value">{{ active_requests }}</div>
+    <div class="stat-label">Active Requests</div>
+  </div>
+  <div class="stat-card green fade-in fade-in-delay-2">
+    <div class="stat-icon">💝</div>
+    <div class="stat-value">{{ total_donations }}</div>
+    <div class="stat-label">Donations Received</div>
+  </div>
+  <div class="stat-card purple fade-in fade-in-delay-3">
+    <div class="stat-icon">✅</div>
+    <div class="stat-value">{{ completed_deliveries }}</div>
+    <div class="stat-label">Completed Deliveries</div>
+  </div>
+</div>
+
+<!-- Recent Donations Table -->
+<div class="card fade-in">
+  <div class="card-header">
+    <h3>📦 Recent Donations</h3>
+    <a href="/ngo/donation-management/" class="btn btn-outline btn-sm">View All</a>
+  </div>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Donor</th>
+          <th>Quantity</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in recent_donations %}
+        <tr>
+          <td><strong>{{ d.item_name }}</strong></td>
+          <td>{{ d.donor.get_full_name|default:d.donor.username }}</td>
+          <td>{{ d.quantity }} {{ d.unit }}</td>
+          <td><span class="badge badge-{{ d.status }}">{{ d.get_status_display }}</span></td>
+          <td>{{ d.created_at|date:"M d, Y" }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5" style="text-align:center;color:var(--gray-400);padding:2rem;">No donations yet. Create a request to get started!</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

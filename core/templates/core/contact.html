@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Contact — AidBridge{% endblock %}
+{% block content %}
+<section style="padding:4rem 2rem;max-width:680px;margin:0 auto;">
+  <div class="section-title" style="margin-bottom:2.5rem;">
+    <h2><span class="title-accent">Contact Us</span></h2>
+    <p>Have questions? Reach out and we'll get back to you.</p>
+  </div>
+  <div class="auth-card">
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label>👤 Your Name</label>
+        <input type="text" name="name" class="form-control" placeholder="Full name" required>
+      </div>
+      <div class="form-group">
+        <label>📧 Email Address</label>
+        <input type="email" name="email" class="form-control" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>📝 Message</label>
+        <textarea name="message" class="form-control" rows="5" placeholder="Write your message here..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message →</button>
+    </form>
+    <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--gray-200);text-align:center;">
+      <p style="color:var(--gray-500);font-size:0.875rem;">Or email us directly at <a href="mailto:support@aidbridge.org" style="color:var(--primary);font-weight:700;">support@aidbridge.org</a></p>
+    </div>
+  </div>
+</section>
+<footer class="footer"><p>© 2026 <strong>AidBridge</strong> — Connecting Donors, NGOs and Volunteers</p></footer>
+{% endblock %}

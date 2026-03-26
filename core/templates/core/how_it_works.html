@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}How It Works — AidBridge{% endblock %}
+{% block content %}
+<section style="padding:4rem 2rem;max-width:1100px;margin:0 auto;">
+  <div class="section-title" style="margin-bottom:3rem;">
+    <h2>How <span class="title-accent">AidBridge Works</span></h2>
+    <p>A transparent, end-to-end donation management platform — from pledge to delivery.</p>
+  </div>
+
+  <!-- Flow steps -->
+  <div style="display:flex;flex-direction:column;gap:2rem;max-width:760px;margin:0 auto 4rem;">
+    {% for icon, title, desc in steps %}
+    <div class="card" style="padding:1.75rem;display:flex;gap:1.5rem;align-items:flex-start;">
+      <div style="font-size:2.5rem;min-width:56px;text-align:center;">{{ icon }}</div>
+      <div>
+        <h3 style="font-family:var(--font-main);font-weight:800;color:var(--gray-800);margin-bottom:0.5rem;">{{ title }}</h3>
+        <p style="color:var(--gray-600);line-height:1.7;">{{ desc }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div style="text-align:center;">
+    <a href="/accounts/register/" class="btn btn-primary btn-xl">Get Started Today →</a>
+  </div>
+</section>
+{% endblock %}
