@@ -58,8 +58,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'aid_bridge',      # your database name
-        'USER': 'root',              # or 'aiduser' if you created one
-        'PASSWORD': 'Root@1234', # 🔴 replace with your actual MySQL password
+        'USER': 'your_username',              # or 'aiduser' if you created one
+        'PASSWORD': 'your_password', # 🔴 replace with your actual MySQL password
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
